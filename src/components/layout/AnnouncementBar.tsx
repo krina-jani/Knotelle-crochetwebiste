@@ -30,11 +30,11 @@ export function AnnouncementBar() {
         {/* Right Contact Quick Links */}
         <div className="hidden sm:flex items-center gap-4 text-xs font-medium text-[#2E211E]">
           <a
-            href="tel:+919773038243"
+            href="tel:+919773039243"
             className="flex items-center gap-1.5 hover:text-[#913638] transition-colors"
           >
             <Phone className="w-3.5 h-3.5 text-[#913638]" />
-            <span>+91 97730 38243</span>
+            <span>+91 97730 39243</span>
           </a>
           <a
             href="mailto:support@knotelle.in"
@@ -44,7 +44,7 @@ export function AnnouncementBar() {
             <Mail className="w-3.5 h-3.5" />
           </a>
           <a
-            href="https://wa.me/919773038243"
+            href="https://wa.me/919773039243"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp chat"

@@ -330,3 +330,55 @@ export function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) 
     </svg>
   );
 }
+
+export function BotanicalSideBranch({ className = "w-24 h-48 text-[#EFB8B0]" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 80 180"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Main curved branch stem */}
+      <path
+        d="M20 175C25 140 35 100 45 60C50 40 55 20 60 5"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+      {/* Lower leaves & blossoms */}
+      <path
+        d="M23 155C12 150 5 140 8 130C15 130 25 140 27 150"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M27 140C38 135 48 132 45 120C38 120 30 128 29 135"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      {/* Mid flower buds */}
+      <path
+        d="M33 115C20 108 15 95 20 85C28 88 33 98 36 108"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M38 95C50 88 58 80 54 68C46 70 40 80 39 90"
+        stroke="currentColor"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      {/* Delicate floral petals */}
+      <circle cx="12" cy="132" r="5" stroke="currentColor" strokeWidth="0.8" fill="currentColor" fillOpacity="0.15" />
+      <circle cx="22" cy="88" r="6" stroke="currentColor" strokeWidth="0.8" fill="currentColor" fillOpacity="0.15" />
+      <circle cx="56" cy="70" r="5.5" stroke="currentColor" strokeWidth="0.8" fill="currentColor" fillOpacity="0.15" />
+      <circle cx="62" cy="8" r="4.5" stroke="currentColor" strokeWidth="0.8" fill="currentColor" fillOpacity="0.2" />
+    </svg>
+  );
+}
+

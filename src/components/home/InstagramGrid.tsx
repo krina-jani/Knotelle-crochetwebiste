@@ -15,7 +15,7 @@ export function InstagramGrid() {
           <p className="text-xs sm:text-sm text-[#786864] mt-1">
             Follow our journey on Instagram{" "}
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/knotelleindia"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#913638] font-semibold hover:underline"
