@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FlowerIcon } from "@/components/ui/BotanicalDecorations";
+import { FlowerIcon, KnotelleCrownLogo } from "@/components/ui/BotanicalDecorations";
 import { useAuth } from "@/context/AuthContext";
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -29,8 +29,8 @@ export default function SignupPage() {
       <div className="w-full max-w-lg bg-white rounded-3xl border border-[#E8D4CF] p-8 sm:p-10 shadow-boutique space-y-6">
         
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-full bg-[#FDE9E5] border border-[#E8D4CF] flex items-center justify-center text-[#8F3032] mx-auto mb-2">
-            <FlowerIcon className="w-6 h-6 text-[#8F3032]" />
+          <div className="flex justify-center mb-2">
+            <KnotelleCrownLogo className="h-16" />
           </div>
           <h1 className="font-serif-luxury text-3xl font-bold text-[#3A211D]">
             Create Your Account

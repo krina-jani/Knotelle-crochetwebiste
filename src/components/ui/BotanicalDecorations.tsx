@@ -1,37 +1,21 @@
 import React from "react";
+import Image from "next/image";
 
-export function KnotelleCrownLogo({ className = "h-12" }: { className?: string }) {
+export function KnotelleCrownLogo({ className = "h-14" }: { className?: string }) {
   return (
-    <div className={`flex flex-col items-center text-center ${className}`}>
-      {/* Crown Icon */}
-      <svg
-        viewBox="0 0 28 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-5 h-3.5 text-[#913638] mb-0.5"
-        aria-hidden="true"
-      >
-        <path
-          d="M2 17H26V15L21 6L14 12L7 6L2 15V17Z"
-          fill="#913638"
-          stroke="#913638"
-          strokeWidth="1.2"
-        />
-        <circle cx="7" cy="4.5" r="1.5" fill="#913638" />
-        <circle cx="14" cy="2" r="1.8" fill="#913638" />
-        <circle cx="21" cy="4.5" r="1.5" fill="#913638" />
-      </svg>
-
-      {/* Brand Wordmark */}
-      <span className="font-serif-luxury text-2xl font-bold tracking-[0.16em] text-[#2E211E] leading-none">
-        KNOTELLE
-      </span>
-      <span className="text-[9px] tracking-[0.18em] text-[#786864] font-medium uppercase font-sans mt-0.5">
-        Handmade Crochet Creations
-      </span>
+    <div className={`relative inline-flex items-center justify-center ${className}`}>
+      <Image
+        src="/images/logo/logo.png"
+        alt="KNOTELLE — Handmade Crochet Creations"
+        width={180}
+        height={150}
+        priority
+        className="object-contain max-h-12 sm:max-h-14 w-auto drop-shadow-2xs transition-transform duration-300 hover:scale-105"
+      />
     </div>
   );
 }
+
 
 export function BotanicalFlourish({ className = "w-24 h-6 text-[#E7D1CC]" }: { className?: string }) {
   return (

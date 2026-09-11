@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, Heart, ShoppingBag, User, Sparkles, ChevronRight, Phone, Mail } from "lucide-react";
 import { CATEGORIES } from "@/data/categories";
-import { FlowerIcon } from "@/components/ui/BotanicalDecorations";
+import { FlowerIcon, KnotelleCrownLogo } from "@/components/ui/BotanicalDecorations";
 import { useWishlist } from "@/context/WishlistContext";
 import { useCart } from "@/context/CartContext";
 
@@ -58,15 +58,7 @@ export function MobileDrawer({ isOpen, onClose, onOpenSearch }: MobileDrawerProp
               onClick={onClose}
               className="flex items-center gap-2 group"
             >
-              <FlowerIcon className="w-6 h-6 text-[#8F3032]" />
-              <div className="flex flex-col">
-                <span className="font-serif-luxury text-xl font-bold tracking-widest text-[#3A211D]">
-                  KNOTELLE
-                </span>
-                <span className="text-[9px] tracking-widest text-[#78635E] uppercase -mt-1 font-sans">
-                  Crochet Boutique
-                </span>
-              </div>
+              <KnotelleCrownLogo className="h-10" />
             </Link>
             <button
               onClick={onClose}
