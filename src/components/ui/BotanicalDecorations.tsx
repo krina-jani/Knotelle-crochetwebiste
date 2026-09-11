@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-export function KnotelleCrownLogo({ className = "h-12 w-12 sm:h-14 sm:w-14" }: { className?: string }) {
+export function KnotelleCrownLogo({ className = "h-14 w-auto" }: { className?: string }) {
   return (
     <div className={`relative inline-flex items-center justify-center shrink-0 ${className}`}>
       <Image
-        src="/knotelle/images/logo/logo.png"
+        src="/knotelle/images/logo/Logo_1.png"
         alt="KNOTELLE — Handmade Crochet Creations"
-        width={200}
-        height={200}
+        width={360}
+        height={420}
         priority
-        className="object-contain w-full h-full drop-shadow-md transition-transform duration-300 hover:scale-105"
+        className="object-contain w-auto h-full max-h-full drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
       />
     </div>
   );

@@ -30,7 +30,7 @@ export default function SignupPage() {
         
         <div className="text-center space-y-2">
           <div className="flex justify-center mb-2">
-            <KnotelleCrownLogo className="h-14 w-14 sm:h-18 sm:w-18" />
+            <KnotelleCrownLogo className="h-20 sm:h-24 w-auto" />
           </div>
           <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#2E211E]">
             Create Your Account
