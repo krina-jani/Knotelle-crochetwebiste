@@ -8,9 +8,9 @@ export function KnotelleCrownLogo({ className = "h-14" }: { className?: string }
         src="/images/logo/logo.png"
         alt="KNOTELLE — Handmade Crochet Creations"
         width={180}
-        height={150}
+        height={180}
         priority
-        className="object-contain max-h-12 sm:max-h-14 w-auto drop-shadow-2xs transition-transform duration-300 hover:scale-105"
+        className="object-contain max-h-12 sm:max-h-14 w-auto drop-shadow-md transition-transform duration-300 hover:scale-105"
       />
     </div>
   );
