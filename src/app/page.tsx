@@ -6,7 +6,7 @@ import { BestSellers } from "@/components/home/BestSellers";
 import { BrandStory } from "@/components/home/BrandStory";
 import { CustomOrderCTA } from "@/components/home/CustomOrderCTA";
 import { Testimonials } from "@/components/home/Testimonials";
-import { InstagramGrid } from "@/components/home/InstagramGrid";
+import { BlogReels } from "@/components/home/BlogReels";
 import { Newsletter } from "@/components/home/Newsletter";
 
 export default function HomePage() {
@@ -36,8 +36,8 @@ export default function HomePage() {
       {/* SECTION 8 — TESTIMONIALS */}
       <Testimonials />
 
-      {/* SECTION 9 — INSTAGRAM / GALLERY */}
-      <InstagramGrid />
+      {/* SECTION 9 — BLOG & REELS */}
+      <BlogReels />
 
       {/* SECTION 10 — NEWSLETTER */}
       <Newsletter />
