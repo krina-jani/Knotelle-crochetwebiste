@@ -44,8 +44,8 @@ export function Navbar() {
 
             {/* Left: KNOTELLE Logo with Crown */}
             <div className="flex items-center">
-              <Link href="/" className="flex items-center group">
-                <KnotelleCrownLogo className="py-1" />
+              <Link href="/" className="flex items-center group py-1" aria-label="KNOTELLE Home">
+                <KnotelleCrownLogo className="h-11 w-11 sm:h-13 sm:w-13" />
               </Link>
             </div>
 

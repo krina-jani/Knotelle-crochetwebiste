@@ -1,42 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
-export function KnotelleCrownLogo({ 
-  className = "",
-  size = "md" 
-}: { 
-  className?: string;
-  size?: "sm" | "md" | "lg";
-}) {
-  const sizeClass = {
-    sm: "w-11 h-11 sm:w-12 sm:h-12",
-    md: "w-14 h-14 sm:w-16 sm:h-16",
-    lg: "w-18 h-18 sm:w-22 sm:h-22",
-  }[size] || "w-14 h-14 sm:w-16 sm:h-16";
-
+export function KnotelleCrownLogo({ className = "h-12 w-12 sm:h-14 sm:w-14" }: { className?: string }) {
   return (
-    <div className={`relative inline-flex items-center justify-center ${className}`}>
-      {/* High-Contrast Black Circular Badge with Luxury Metallic Gold Border */}
-      <div 
-        className={`relative ${sizeClass} rounded-full bg-[#120F0E] border-2 border-[#D4AF37] shadow-lg flex items-center justify-center p-1.5 overflow-hidden transition-all duration-300 hover:scale-105 group ring-2 ring-black/10`}
-        style={{
-          boxShadow: "0 4px 14px rgba(0, 0, 0, 0.35), inset 0 0 10px rgba(0, 0, 0, 0.8)",
-          background: "radial-gradient(circle at 35% 35%, #2A221E 0%, #151210 60%, #0A0807 100%)",
-        }}
-      >
-        {/* Inner Gold Accent Ring */}
-        <div className="absolute inset-[3px] rounded-full border border-[#D4AF37]/50 pointer-events-none" />
-        
-        {/* Logo Image */}
-        <Image
-          src="/images/logo/logo-transparent.png"
-          alt="KNOTELLE — Handmade Crochet Creations"
-          width={180}
-          height={180}
-          priority
-          className="relative z-10 w-full h-full object-contain p-0.5 drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
+    <div className={`relative inline-flex items-center justify-center shrink-0 ${className}`}>
+      <Image
+        src="/images/logo/logo.png"
+        alt="KNOTELLE — Handmade Crochet Creations"
+        width={200}
+        height={200}
+        priority
+        className="object-contain w-full h-full drop-shadow-md transition-transform duration-300 hover:scale-105"
+      />
     </div>
   );
 }

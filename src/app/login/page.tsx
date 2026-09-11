@@ -27,7 +27,7 @@ export default function LoginPage() {
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex justify-center mb-2">
-            <KnotelleCrownLogo className="h-16" />
+            <KnotelleCrownLogo className="h-16 w-16 sm:h-20 sm:w-20" />
           </div>
           <h1 className="font-serif-luxury text-3xl font-bold text-[#3A211D]">
             Welcome Back

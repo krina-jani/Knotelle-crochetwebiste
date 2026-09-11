@@ -58,7 +58,7 @@ export function MobileDrawer({ isOpen, onClose, onOpenSearch }: MobileDrawerProp
               onClick={onClose}
               className="flex items-center gap-2 group"
             >
-              <KnotelleCrownLogo className="h-10" />
+              <KnotelleCrownLogo className="h-10 w-10 sm:h-12 sm:w-12" />
             </Link>
             <button
               onClick={onClose}
