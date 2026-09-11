@@ -47,6 +47,31 @@ const QUICK_YARN_SWATCHES = [
   { name: "Mint Sprig", hex: "#A8DADC" },
 ];
 
+const EXPANDED_YARN_SWATCHES = [
+  { name: "Cream White", hex: "#FFFDF9" },
+  { name: "Powder Pink", hex: "#F8C8C8" },
+  { name: "Blush Rose", hex: "#F4C7C1" },
+  { name: "Victorian Berry", hex: "#8F3032" },
+  { name: "Crimson Red", hex: "#B22222" },
+  { name: "Sage Olive", hex: "#9CAF88" },
+  { name: "Forest Green", hex: "#2D5A27" },
+  { name: "Lavender Mist", hex: "#D8C7E8" },
+  { name: "Deep Royal Purple", hex: "#1C0C40" },
+  { name: "Lilac Violet", hex: "#9B5DE5" },
+  { name: "Sunset Gold", hex: "#E8A317" },
+  { name: "Honey Mustard", hex: "#F4A261" },
+  { name: "Terracotta", hex: "#E07A5F" },
+  { name: "Mocha Brown", hex: "#8D6E63" },
+  { name: "Espresso", hex: "#3A211D" },
+  { name: "Baby Blue", hex: "#87CEEB" },
+  { name: "Sky Azure", hex: "#00B4D8" },
+  { name: "Ocean Teal", hex: "#2A9D8F" },
+  { name: "Lemon Chiffon", hex: "#FDFD96" },
+  { name: "Mint Sprig", hex: "#A8DADC" },
+  { name: "Charcoal Slate", hex: "#4A4E69" },
+  { name: "Midnight Black", hex: "#1D1E2C" },
+];
+
 export default function CustomOrderPage() {
   const { showToast } = useToast();
   const colorInputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +83,9 @@ export default function CustomOrderPage() {
   const [category, setCategory] = useState("Bouquet");
   const [selectedPalette, setSelectedPalette] = useState("Blush Garden");
   const [customColors, setCustomColors] = useState<string[]>([]);
-  const [pickerColor, setPickerColor] = useState<string>("#F8C8C8");
+  const [pickerColor, setPickerColor] = useState<string>("#1C0C40");
+  const [isColorModalOpen, setIsColorModalOpen] = useState(false);
+  const [tempPickerColor, setTempPickerColor] = useState<string>("#1C0C40");
   const [customColorNotes, setCustomColorNotes] = useState("");
   const [sizePreference, setSizePreference] = useState("Standard / Medium");
   const [personalization, setPersonalization] = useState("");
@@ -71,25 +98,41 @@ export default function CustomOrderPage() {
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
 
   const getSwatchDetails = (hex: string) => {
-    const matched = QUICK_YARN_SWATCHES.find((s) => s.hex.toLowerCase() === hex.toLowerCase());
+    const matched =
+      EXPANDED_YARN_SWATCHES.find((s) => s.hex.toLowerCase() === hex.toLowerCase()) ||
+      QUICK_YARN_SWATCHES.find((s) => s.hex.toLowerCase() === hex.toLowerCase());
     return {
       name: matched ? matched.name : hex.toUpperCase(),
       hex: hex,
     };
   };
 
-  const handleOpenColorPalette = () => {
-    if (colorInputRef.current) {
-      if ("showPicker" in HTMLInputElement.prototype) {
-        try {
-          colorInputRef.current.showPicker();
-          return;
-        } catch {
-          // Fallback to click
-        }
-      }
-      colorInputRef.current.click();
+  const handleOpenColorModal = () => {
+    setTempPickerColor(pickerColor || "#1C0C40");
+    setIsColorModalOpen(true);
+  };
+
+  const handleConfirmColorDone = () => {
+    if (!tempPickerColor) {
+      setIsColorModalOpen(false);
+      return;
     }
+    setPickerColor(tempPickerColor);
+    const isSelected = customColors.some((c) => c.toLowerCase() === tempPickerColor.toLowerCase());
+    if (isSelected) {
+      showToast("Already Added", `${tempPickerColor.toUpperCase()} is already in your selected shades.`, "info");
+      setIsColorModalOpen(false);
+      return;
+    }
+    if (customColors.length >= 6) {
+      showToast("Maximum 6 Colors", "You can select up to 6 custom yarn shades.", "error");
+      setIsColorModalOpen(false);
+      return;
+    }
+    const updated = [...customColors, tempPickerColor];
+    setCustomColors(updated);
+    showToast("Yarn Shade Added 🎨", `Added ${tempPickerColor.toUpperCase()} (${updated.length}/6)`, "success");
+    setIsColorModalOpen(false);
   };
 
   const toggleColorSelection = (hex: string, name?: string) => {
@@ -109,24 +152,6 @@ export default function CustomOrderPage() {
         showToast("Yarn Shade Selected 🎨", `Selected ${name || hex.toUpperCase()} (${updated.length}/6)`, "success");
         return updated;
       }
-    });
-  };
-
-  const handleAddCurrentColor = () => {
-    if (!pickerColor) return;
-    setCustomColors((prev) => {
-      const isSelected = prev.some((c) => c.toLowerCase() === pickerColor.toLowerCase());
-      if (isSelected) {
-        showToast("Already Added", `${pickerColor.toUpperCase()} is already in your selected shades.`, "info");
-        return prev;
-      }
-      if (prev.length >= 6) {
-        showToast("Maximum 6 Colors", "You can select up to 6 custom yarn shades.", "error");
-        return prev;
-      }
-      const updated = [...prev, pickerColor];
-      showToast("Yarn Shade Added 🎨", `Added ${pickerColor.toUpperCase()} (${updated.length}/6)`, "success");
-      return updated;
     });
   };
 
@@ -352,22 +377,12 @@ export default function CustomOrderPage() {
 
                       {/* Live Color Picker Trigger & Add Button */}
                       <div className="flex items-center gap-2">
-                        {/* Hidden Native Color Input with Ref */}
-                        <input
-                          ref={colorInputRef}
-                          type="color"
-                          value={pickerColor}
-                          onChange={(e) => setPickerColor(e.target.value)}
-                          className="sr-only"
-                          title="Choose custom yarn color"
-                        />
-
-                        {/* Interactive Color Swatch Box (Clicking opens color palette) */}
+                        {/* Interactive Color Swatch Box (Clicking opens color palette modal) */}
                         <button
                           type="button"
-                          onClick={handleOpenColorPalette}
-                          className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E7D1CC] shadow-xs hover:border-[#913638] transition-all cursor-pointer group"
-                          title="Click to pick color"
+                          onClick={handleOpenColorModal}
+                          className="relative flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-[#E7D1CC] shadow-xs hover:border-[#913638] hover:bg-[#FCE9E5]/30 transition-all cursor-pointer group"
+                          title="Click to pick a custom color"
                         >
                           <span
                             className="w-5 h-5 rounded-md border border-black/15 shrink-0 shadow-2xs group-hover:scale-110 transition-transform"
@@ -378,10 +393,10 @@ export default function CustomOrderPage() {
                           </span>
                         </button>
 
-                        {/* + Add Color Button */}
+                        {/* + Add Color Button (Opens Modal with Done Button) */}
                         <button
                           type="button"
-                          onClick={handleAddCurrentColor}
+                          onClick={handleOpenColorModal}
                           className="px-4 py-2 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
@@ -389,6 +404,113 @@ export default function CustomOrderPage() {
                         </button>
                       </div>
                     </div>
+
+                    {/* Color Picker Modal with Done Button */}
+                    {isColorModalOpen && (
+                      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in duration-200">
+                        <div className="w-full max-w-md bg-white rounded-3xl border border-[#E7D1CC] shadow-2xl p-6 sm:p-7 space-y-5 animate-in zoom-in-95 duration-200">
+                          
+                          {/* Modal Header */}
+                          <div className="flex items-center justify-between border-b border-[#E7D1CC] pb-3">
+                            <div className="flex items-center gap-2">
+                              <Pipette className="w-4 h-4 text-[#913638]" />
+                              <h3 className="font-serif-luxury text-lg font-bold text-[#2E211E]">
+                                Select Custom Yarn Shade
+                              </h3>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => setIsColorModalOpen(false)}
+                              className="p-1.5 rounded-full text-[#786864] hover:text-[#2E211E] hover:bg-[#FCE9E5] transition-colors cursor-pointer"
+                              aria-label="Close dialog"
+                            >
+                              <X className="w-5 h-5" />
+                            </button>
+                          </div>
+
+                          {/* Selected Color Live Preview & Input */}
+                          <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC]">
+                            <div className="relative">
+                              <input
+                                type="color"
+                                value={tempPickerColor}
+                                onChange={(e) => setTempPickerColor(e.target.value)}
+                                className="w-14 h-14 rounded-2xl border-2 border-[#E7D1CC] cursor-pointer shadow-xs p-0.5 bg-white"
+                                title="Click to choose custom shade"
+                              />
+                            </div>
+                            <div className="flex-1 space-y-1">
+                              <label className="text-xs font-semibold text-[#786864] block">
+                                Selected Hex Code:
+                              </label>
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="text"
+                                  value={tempPickerColor}
+                                  onChange={(e) => {
+                                    const val = e.target.value;
+                                    setTempPickerColor(val.startsWith("#") ? val : `#${val}`);
+                                  }}
+                                  placeholder="#1C0C40"
+                                  maxLength={7}
+                                  className="w-28 px-3 py-1.5 rounded-xl bg-white border border-[#E7D1CC] text-xs font-mono font-bold uppercase text-[#2E211E] focus:outline-none focus:border-[#913638]"
+                                />
+                                <span className="text-[11px] font-semibold text-[#913638]">
+                                  {getSwatchDetails(tempPickerColor).name}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Quick Curated Boutique Yarn Tones */}
+                          <div className="space-y-2">
+                            <span className="text-xs font-semibold text-[#2E211E] block">
+                              Or Choose a Boutique Yarn Tone:
+                            </span>
+                            <div className="grid grid-cols-6 gap-2 max-h-36 overflow-y-auto p-1 border border-[#E7D1CC]/60 rounded-2xl bg-[#FFF9F6]/50">
+                              {EXPANDED_YARN_SWATCHES.map((swatch) => (
+                                <button
+                                  key={swatch.hex}
+                                  type="button"
+                                  onClick={() => setTempPickerColor(swatch.hex)}
+                                  className={`flex flex-col items-center justify-center p-1.5 rounded-xl border transition-all cursor-pointer ${
+                                    tempPickerColor.toLowerCase() === swatch.hex.toLowerCase()
+                                      ? "border-[#913638] bg-[#FCE9E5] ring-2 ring-[#913638]/40 scale-105 shadow-xs"
+                                      : "border-[#E7D1CC] bg-white hover:bg-[#FFF9F6]"
+                                  }`}
+                                  title={swatch.name}
+                                >
+                                  <span
+                                    className="w-6 h-6 rounded-full border border-black/10 shadow-2xs"
+                                    style={{ backgroundColor: swatch.hex }}
+                                  />
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Modal Action Buttons: Cancel & Done */}
+                          <div className="flex items-center gap-3 pt-3 border-t border-[#E7D1CC]">
+                            <button
+                              type="button"
+                              onClick={() => setIsColorModalOpen(false)}
+                              className="w-1/2 py-2.5 px-4 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] text-xs font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] transition-all cursor-pointer text-center"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="button"
+                              onClick={handleConfirmColorDone}
+                              className="w-1/2 py-2.5 px-4 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                            >
+                              <Check className="w-3.5 h-3.5 stroke-[3]" />
+                              <span>Done (Add Shade)</span>
+                            </button>
+                          </div>
+
+                        </div>
+                      </div>
+                    )}
 
                     {/* Selected Yarn Shades (Always visible with accurate count) */}
                     <div className="pt-2 border-t border-[#E8D4CF]/60">
