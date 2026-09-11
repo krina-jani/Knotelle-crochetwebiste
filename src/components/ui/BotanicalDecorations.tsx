@@ -242,75 +242,83 @@ export function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) 
   );
 }
 
-export function YouTubeIcon({ className = "w-4 h-4" }: { className?: string }) {
+export function YouTubeIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      className={`drop-shadow-xs ${className}`}
       aria-hidden="true"
     >
-      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-      <polygon points="10 15 15 12 10 9 10 15" fill="currentColor" />
+      <rect width="24" height="24" rx="6" fill="#FF0000" />
+      <path
+        d="M19 8.2c-.15-.6-.6-1.05-1.2-1.2-1.1-.3-5.8-.3-5.8-.3s-4.7 0-5.8.3c-.6.15-1.05.6-1.2 1.2-.3 1.1-.3 3.8-.3 3.8s0 2.7.3 3.8c.15.6.6 1.05 1.2 1.2 1.1.3 5.8.3 5.8.3s4.7 0 5.8-.3c.6-.15 1.05-.6 1.2-1.2.3-1.1.3-3.8.3-3.8s0-2.7-.3-3.8z"
+        fill="white"
+      />
+      <polygon points="10.5 14.2 14.5 12 10.5 9.8" fill="#FF0000" />
     </svg>
   );
 }
 
-export function PinterestIcon({ className = "w-4 h-4" }: { className?: string }) {
+export function PinterestIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      className={`drop-shadow-xs ${className}`}
       aria-hidden="true"
     >
-      <line x1="12" y1="9" x2="12" y2="21" />
-      <path d="M8 12a4 4 0 1 1 8 0c0 3-2 6-4 8" />
-      <circle cx="12" cy="12" r="10" />
+      <rect width="24" height="24" rx="6" fill="#E60023" />
+      <path
+        d="M12 4a8 8 0 0 0-2.8 15.5c-.05-.65-.1-1.65.02-2.35.12-.7.8-3.4.8-3.4s-.2-.4-.2-1c0-.95.55-1.65 1.25-1.65.6 0 .9.45.9 1 0 .6-.4 1.5-.6 2.35-.15.7.35 1.25 1.05 1.25 1.25 0 2.2-1.3 2.2-3.2 0-1.65-1.2-2.8-2.9-2.8-1.95 0-3.1 1.45-3.1 3 0 .6.25 1.25.5 1.6.05.08.06.15.04.22-.05.2-.18.75-.2.85-.03.15-.12.18-.25.1-1-.45-1.6-1.9-1.6-3.05 0-2.5 1.8-4.8 5.25-4.8 2.8 0 4.95 2 4.95 4.65 0 2.75-1.75 5-4.15 5-.8 0-1.6-.4-1.85-.9l-.5 1.9c-.2.7-.7 1.6-1.05 2.15.75.25 1.55.35 2.4.35A8 8 0 0 0 12 4z"
+        fill="white"
+      />
     </svg>
   );
 }
 
-export function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
+export function InstagramIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      className={`drop-shadow-xs ${className}`}
       aria-hidden="true"
     >
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+      <defs>
+        <radialGradient id="instaGradFoot" cx="30%" cy="105%" r="130%">
+          <stop offset="0%" stopColor="#FFD600" />
+          <stop offset="25%" stopColor="#FF6026" />
+          <stop offset="50%" stopColor="#FF0069" />
+          <stop offset="75%" stopColor="#D300C5" />
+          <stop offset="100%" stopColor="#7638FA" />
+        </radialGradient>
+      </defs>
+      <rect width="24" height="24" rx="6" fill="url(#instaGradFoot)" />
+      <rect x="5.5" y="5.5" width="13" height="13" rx="3.5" stroke="white" strokeWidth="1.6" />
+      <circle cx="12" cy="12" r="3.2" stroke="white" strokeWidth="1.6" />
+      <circle cx="15.8" cy="8.2" r="0.9" fill="white" />
     </svg>
   );
 }
 
-export function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
+export function FacebookIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"
       fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      className={`drop-shadow-xs ${className}`}
       aria-hidden="true"
     >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+      <rect width="24" height="24" rx="6" fill="#1877F2" />
+      <path
+        d="M15.5 13.5l.5-3.5h-3.5V7.8c0-.95.45-1.8 1.9-1.8H16V3.2c-.35-.05-1.5-.15-2.85-.15-2.9 0-4.65 1.75-4.65 4.8V10H5.5v3.5h3V22h4v-8.5h3z"
+        fill="white"
+      />
     </svg>
   );
 }
