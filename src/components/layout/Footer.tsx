@@ -17,7 +17,7 @@ export function Footer() {
       {/* Full-Width Panoramic Footer Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
-          src="/images/categories/footer.png"
+          src="/knotelle/images/categories/footer.png"
           alt="KNOTELLE Boutique Footer"
           fill
           quality={100}

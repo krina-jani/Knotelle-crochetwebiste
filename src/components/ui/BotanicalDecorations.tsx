@@ -5,7 +5,7 @@ export function KnotelleCrownLogo({ className = "h-12 w-12 sm:h-14 sm:w-14" }: {
   return (
     <div className={`relative inline-flex items-center justify-center shrink-0 ${className}`}>
       <Image
-        src="/images/logo/logo.png"
+        src="/knotelle/images/logo/logo.png"
         alt="KNOTELLE — Handmade Crochet Creations"
         width={200}
         height={200}

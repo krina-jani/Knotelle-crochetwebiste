@@ -27,7 +27,7 @@ export function Testimonials() {
         rating: 5,
         review: "Absolutely in love with my crochet bouquet! The quality and detailing are breathtaking. It sits on my desk and brightens every single day.",
         productName: "Bespoke Rose Bouquet",
-        productImage: "/images/products/rose-bouquet.jpg",
+        productImage: "/knotelle/images/products/rose-bouquet.jpg",
       },
       {
         id: "t-2",
@@ -36,7 +36,7 @@ export function Testimonials() {
         rating: 5,
         review: "The bunny keychain is insanely cute! Perfect for gifting. Beautiful craftsmanship, soft milk cotton yarn, and a super sturdy gold clasp.",
         productName: "Cute Bunny Keychain",
-        productImage: "/images/products/bunny-keychain.jpg",
+        productImage: "/knotelle/images/products/bunny-keychain.jpg",
       },
       {
         id: "t-3",
@@ -45,7 +45,7 @@ export function Testimonials() {
         rating: 5,
         review: "I ordered the vintage granny square tote and it turned out even more gorgeous in person. Sturdy straps and lovely artisan stitchwork!",
         productName: "Granny Square Bag",
-        productImage: "/images/products/granny-square-bag.jpg",
+        productImage: "/knotelle/images/products/granny-square-bag.jpg",
       },
       {
         id: "t-4",
@@ -54,7 +54,7 @@ export function Testimonials() {
         rating: 5,
         review: "The sunflower stem looks forever fresh! The wired petals hold shape beautifully and the warm color tone is so cheerful.",
         productName: "Everlasting Sunflower",
-        productImage: "/images/products/sunflower-stem.jpg",
+        productImage: "/knotelle/images/products/sunflower-stem.jpg",
       },
       {
         id: "t-5",
@@ -63,7 +63,7 @@ export function Testimonials() {
         rating: 5,
         review: "My morning coffee feels so aesthetic with this tulip mug cozy! It protects my hands and feels velvety soft to hold.",
         productName: "Tulip Blossom Mug Cozy",
-        productImage: "/images/products/tulip-mug-cozy.jpg",
+        productImage: "/knotelle/images/products/tulip-mug-cozy.jpg",
       },
       {
         id: "t-6",
@@ -72,7 +72,7 @@ export function Testimonials() {
         rating: 5,
         review: "The daisy phone sleeve fits my phone snugly with soft velvet yarn protection. Loved the boutique packaging and handwritten note!",
         productName: "Daisy Phone Sleeve",
-        productImage: "/images/products/daisy-phone-cover.jpg",
+        productImage: "/knotelle/images/products/daisy-phone-cover.jpg",
       },
     ],
     []

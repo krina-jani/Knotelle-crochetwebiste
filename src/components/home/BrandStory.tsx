@@ -19,7 +19,7 @@ export function BrandStory() {
       {/* Full-Width Background Image Layer */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
-          src="/images/homepage/middleimg.png"
+          src="/knotelle/images/homepage/middleimg.png"
           alt="KNOTELLE Artisanal Crochet Craftsmanship"
           fill
           quality={100}
