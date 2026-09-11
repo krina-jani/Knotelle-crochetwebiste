@@ -36,6 +36,16 @@ const HERO_SLIDES = [
     cardNote: "Crafted Just For You",
     scriptAccent: "Where Yarn Meets Art",
   },
+  {
+    id: 4,
+    titleLine1: "Bespoke",
+    titleLine2: "Creations",
+    titleHighlight: "Custom Crafted",
+    subtitle: "Personalized crochet treasures tailored specially for your memorable moments.",
+    bgImage: "/images/hero/4image.png",
+    cardNote: "Pure Artisan Warmth",
+    scriptAccent: "Customized With Love",
+  },
 ];
 
 export function Hero() {
