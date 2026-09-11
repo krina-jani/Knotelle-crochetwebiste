@@ -1,15 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/ui/ProductCard";
 
 export function BestSellers() {
   const [activeTab, setActiveTab] = useState<string>("all");
+  const [startIndex, setStartIndex] = useState<number>(0);
+  const [isFading, setIsFading] = useState<boolean>(false);
 
-  const bestSellers = PRODUCTS.filter((p) => p.isBestSeller || p.isFeatured);
+  const bestSellers = useMemo(() => {
+    return PRODUCTS.filter((p) => p.isBestSeller || p.isFeatured);
+  }, []);
 
   const categories = [
     { id: "all", label: "All" },
@@ -19,14 +23,46 @@ export function BestSellers() {
     { id: "bags", label: "Bags" },
   ];
 
-  const filteredProducts =
-    activeTab === "all"
-      ? bestSellers
-      : activeTab === "flower"
-      ? bestSellers.filter((p) => p.categorySlug === "flower" || p.categorySlug === "bouquet")
-      : activeTab === "bags"
-      ? bestSellers.filter((p) => p.categorySlug === "bags" || p.categorySlug === "coin-purse")
-      : bestSellers.filter((p) => p.categorySlug === activeTab);
+  const filteredProducts = useMemo(() => {
+    if (activeTab === "all") return bestSellers;
+    if (activeTab === "flower") {
+      return bestSellers.filter((p) => p.categorySlug === "flower" || p.categorySlug === "bouquet");
+    }
+    if (activeTab === "bags") {
+      return bestSellers.filter((p) => p.categorySlug === "bags" || p.categorySlug === "coin-purse");
+    }
+    return bestSellers.filter((p) => p.categorySlug === activeTab);
+  }, [activeTab, bestSellers]);
+
+  // Auto-advance products every 2 seconds (2000ms) with smooth transition
+  useEffect(() => {
+    if (filteredProducts.length <= 6) return;
+
+    const timer = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setStartIndex((prev) => (prev + 1) % filteredProducts.length);
+        setIsFading(false);
+      }, 250);
+    }, 2000);
+
+    return () => clearInterval(timer);
+  }, [filteredProducts.length]);
+
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    setStartIndex(0);
+  };
+
+  // Circular slice of 6 products
+  const visibleProducts = useMemo(() => {
+    if (filteredProducts.length <= 6) return filteredProducts;
+    const items = [];
+    for (let i = 0; i < 6; i++) {
+      items.push(filteredProducts[(startIndex + i) % filteredProducts.length]);
+    }
+    return items;
+  }, [filteredProducts, startIndex]);
 
   return (
     <section className="py-12 sm:py-16 bg-[#FFF9F6] relative">
@@ -42,8 +78,8 @@ export function BestSellers() {
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                onClick={() => handleTabChange(cat.id)}
+                className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === cat.id
                     ? "bg-[#913638] text-white shadow-xs"
                     : "bg-transparent text-[#786864] hover:text-[#2E211E]"
@@ -63,30 +99,41 @@ export function BestSellers() {
           </div>
         </div>
 
-        {/* Product Grid / Carousel with Edge Arrows */}
+        {/* 6 Products Grid with Smooth 2-Second Rotation (Arrows Removed) */}
         <div className="relative">
-          {/* Arrow Left */}
-          <button
-            aria-label="Scroll left"
-            className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-[#E7D1CC] text-[#2E211E] hover:text-[#913638] flex items-center justify-center shadow-md transition-all hidden sm:flex"
+          <div
+            className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 transition-all duration-300 ease-in-out ${
+              isFading ? "opacity-40 scale-[0.99]" : "opacity-100 scale-100"
+            }`}
           >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          {/* 6 Products Grid (6 cols on xl/lg, 3 cols tablet, 2 cols mobile) */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {filteredProducts.slice(0, 6).map((product, idx) => (
-              <ProductCard key={product.id} product={product} priority={idx < 4} />
+            {visibleProducts.map((product, idx) => (
+              <ProductCard key={`${product.id}-${startIndex}-${idx}`} product={product} priority={idx < 4} />
             ))}
           </div>
 
-          {/* Arrow Right */}
-          <button
-            aria-label="Scroll right"
-            className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-[#E7D1CC] text-[#2E211E] hover:text-[#913638] flex items-center justify-center shadow-md transition-all hidden sm:flex"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+          {/* Carousel Progress Dots when more than 6 products */}
+          {filteredProducts.length > 6 && (
+            <div className="flex justify-center items-center gap-1.5 mt-6">
+              {filteredProducts.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setIsFading(true);
+                    setTimeout(() => {
+                      setStartIndex(i);
+                      setIsFading(false);
+                    }, 200);
+                  }}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    startIndex === i
+                      ? "w-5 bg-[#913638]"
+                      : "w-1.5 bg-[#E7D1CC] hover:bg-[#EFB8B0]"
+                  }`}
+                  aria-label={`Go to product group ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
       </div>
