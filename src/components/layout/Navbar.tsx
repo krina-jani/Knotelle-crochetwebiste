@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Search, Heart, User, ShoppingBag, Menu } from "lucide-react";
@@ -27,8 +28,24 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E7D1CC] transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 relative w-full overflow-hidden border-b border-[#E7D1CC]/80 shadow-xs transition-all">
+        {/* Panoramic Background Image Layer */}
+        <div className="absolute inset-0 z-0 w-full h-full pointer-events-none select-none">
+          <Image
+            src="/images/navbar/navbar-bg.png"
+            alt="KNOTELLE Boutique Navbar Banner"
+            fill
+            priority
+            quality={100}
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Subtle light overlay to preserve seamless contrast and text readability across screens */}
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-[0.5px]" />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             
             {/* Mobile: Hamburger Button */}
