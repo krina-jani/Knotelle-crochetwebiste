@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, Sparkles, Flower2, Leaf, ArrowRight, ShieldCheck } from "lucide-react";
-import { BotanicalFlourish, FlowerIcon, YarnBallDecor } from "@/components/ui/BotanicalDecorations";
+import { FlowerIcon } from "@/components/ui/BotanicalDecorations";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 export default function AboutPage() {
@@ -12,22 +12,6 @@ export default function AboutPage() {
         
         {/* Breadcrumbs */}
         <Breadcrumbs items={[{ label: "About KNOTELLE" }]} className="mb-8" />
-
-        {/* Hero Banner */}
-        <div className="bg-white rounded-3xl border border-[#E8D4CF] p-8 sm:p-14 mb-16 shadow-boutique text-center max-w-4xl mx-auto">
-          <div className="flex justify-center mb-2">
-            <BotanicalFlourish className="w-24 h-5 text-[#E9AAA3]" />
-          </div>
-          <span className="text-xs font-semibold text-[#8F3032] uppercase tracking-widest block mb-2">
-            Our Artisan Journey
-          </span>
-          <h1 className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#3A211D] tracking-tight leading-[1.15]">
-            Handmade Crochet That Adds Warmth to Everyday Life
-          </h1>
-          <p className="text-sm sm:text-base text-[#78635E] max-w-2xl mx-auto mt-4 leading-relaxed">
-            KNOTELLE is an Indian artisan boutique dedicated to keeping the slow, meditative craft of crochet alive with natural cotton yarns and bespoke personalization.
-          </p>
-        </div>
 
         {/* Story Section: 2 Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">

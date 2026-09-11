@@ -8,7 +8,6 @@ import { CATEGORIES } from "@/data/categories";
 import { ProductCard } from "@/components/ui/ProductCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { StarRating } from "@/components/ui/StarRating";
-import { BotanicalFlourish } from "@/components/ui/BotanicalDecorations";
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -241,21 +240,6 @@ export default function ShopPage() {
         
         {/* Breadcrumb Navigation */}
         <Breadcrumbs items={[{ label: "Shop All Products" }]} className="mb-6" />
-
-        {/* Page Banner Header */}
-        <div className="bg-white rounded-3xl border border-[#E8D4CF] p-8 sm:p-10 mb-8 sm:mb-12 shadow-boutique text-center relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-3 relative z-10">
-            <div className="flex justify-center mb-1">
-              <BotanicalFlourish className="w-24 h-5 text-[#E9AAA3]" />
-            </div>
-            <h1 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A211D] tracking-tight">
-              Shop All Products
-            </h1>
-            <p className="text-sm sm:text-base text-[#78635E]">
-              Handcrafted with love, for every special moment. Discover everlasting flowers, bespoke bags, plushies, and accessories.
-            </p>
-          </div>
-        </div>
 
         {/* Controls Bar: Count & Sort & Mobile Filter Trigger */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#E8D4CF] mb-8 shadow-xs">
