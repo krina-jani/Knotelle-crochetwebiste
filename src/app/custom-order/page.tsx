@@ -7,6 +7,7 @@ import {
   Sparkles,
   UploadCloud,
   CheckCircle2,
+  Check,
   Clock,
   ArrowRight,
   ArrowLeft,
@@ -56,7 +57,7 @@ export default function CustomOrderPage() {
   // Form State
   const [category, setCategory] = useState("Bouquet");
   const [selectedPalette, setSelectedPalette] = useState("Blush Garden");
-  const [customColors, setCustomColors] = useState<string[]>(["#F4C7C1", "#8F3032", "#9CAF88"]);
+  const [customColors, setCustomColors] = useState<string[]>([]);
   const [pickerColor, setPickerColor] = useState<string>("#F4C7C1");
   const [customColorNotes, setCustomColorNotes] = useState("");
   const [sizePreference, setSizePreference] = useState("Standard / Medium");
@@ -83,11 +84,16 @@ export default function CustomOrderPage() {
     }
   };
 
-  const handleColorPicked = (newColor: string) => {
-    setPickerColor(newColor);
-    if (!customColors.includes(newColor) && customColors.length < 6) {
-      setCustomColors((prev) => [...prev, newColor]);
-      showToast("Yarn Shade Added 🎨", `Added ${newColor.toUpperCase()} to your custom palette.`, "success");
+  const handleAddCurrentColor = () => {
+    if (!customColors.includes(pickerColor)) {
+      if (customColors.length < 6) {
+        setCustomColors((prev) => [...prev, pickerColor]);
+        showToast("Yarn Shade Added 🎨", `Added ${pickerColor.toUpperCase()} to your custom palette.`, "success");
+      } else {
+        showToast("Max Limit Reached", "You can select up to 6 custom colors.", "info");
+      }
+    } else {
+      showToast("Color Already Added", "This shade is already in your selected palette.", "info");
     }
   };
 
@@ -317,7 +323,7 @@ export default function CustomOrderPage() {
                           ref={colorInputRef}
                           type="color"
                           value={pickerColor}
-                          onChange={(e) => handleColorPicked(e.target.value)}
+                          onChange={(e) => setPickerColor(e.target.value)}
                           className="sr-only"
                           title="Open color palette"
                         />
@@ -338,10 +344,10 @@ export default function CustomOrderPage() {
                           </span>
                         </button>
 
-                        {/* + Add Color Button (Clicking opens color palette dialog directly) */}
+                        {/* + Add Color Button (Adds current pickerColor to custom palette) */}
                         <button
                           type="button"
-                          onClick={handleOpenColorPalette}
+                          onClick={handleAddCurrentColor}
                           className="px-4 py-2 rounded-xl bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] active:scale-95 transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
@@ -351,16 +357,28 @@ export default function CustomOrderPage() {
                     </div>
 
                     {/* Active Custom Palette Swatches */}
-                    {customColors.length > 0 && (
-                      <div className="pt-2 border-t border-[#E8D4CF]/60">
-                        <span className="text-[11px] font-semibold text-[#78635E] block mb-2">
+                    <div className="pt-2 border-t border-[#E8D4CF]/60">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-[11px] font-semibold text-[#78635E]">
                           Your Selected Yarn Shades ({customColors.length}/6):
                         </span>
+                        {customColors.length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => setCustomColors([])}
+                            className="text-[10px] font-semibold text-[#8F3032] hover:underline cursor-pointer"
+                          >
+                            Clear All
+                          </button>
+                        )}
+                      </div>
+
+                      {customColors.length > 0 ? (
                         <div className="flex flex-wrap items-center gap-2">
                           {customColors.map((color, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full bg-white border border-[#E8D4CF] shadow-2xs group"
+                              className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full bg-white border border-[#8F3032]/40 shadow-2xs group ring-1 ring-[#8F3032]/20"
                             >
                               <span
                                 className="w-5 h-5 rounded-full border border-black/15 shrink-0 shadow-xs"
@@ -369,10 +387,11 @@ export default function CustomOrderPage() {
                               <span className="text-[11px] font-mono font-bold text-[#3A211D] uppercase">
                                 {color}
                               </span>
+                              <Check className="w-3 h-3 text-[#8F3032]" />
                               <button
                                 type="button"
                                 onClick={() => setCustomColors(customColors.filter((_, i) => i !== idx))}
-                                className="ml-1 text-[#78635E] hover:text-[#8F3032] transition-colors cursor-pointer"
+                                className="ml-0.5 text-[#78635E] hover:text-[#8F3032] transition-colors cursor-pointer"
                                 aria-label={`Remove color ${color}`}
                               >
                                 <X className="w-3 h-3" />
@@ -380,8 +399,12 @@ export default function CustomOrderPage() {
                             </div>
                           ))}
                         </div>
-                      </div>
-                    )}
+                      ) : (
+                        <p className="text-[11px] text-[#78635E] italic">
+                          No custom shades selected yet. Pick a color or click an artisan shade below to select.
+                        </p>
+                      )}
+                    </div>
 
                     {/* Quick Artisan Yarn Color Swatches */}
                     <div className="pt-2 border-t border-[#E8D4CF]/60">
@@ -400,12 +423,15 @@ export default function CustomOrderPage() {
                                   setCustomColors(customColors.filter((c) => c !== swatch.hex));
                                 } else if (customColors.length < 6) {
                                   setCustomColors([...customColors, swatch.hex]);
+                                  showToast("Yarn Shade Added 🎨", `Selected ${swatch.name} (${swatch.hex})`, "success");
+                                } else {
+                                  showToast("Max Limit Reached", "You can select up to 6 custom colors.", "info");
                                 }
                                 setPickerColor(swatch.hex);
                               }}
-                              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-xs transition-all cursor-pointer ${
+                              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs transition-all cursor-pointer ${
                                 isSelected
-                                  ? "bg-[#FDE9E5] border-[#8F3032] text-[#8F3032] font-bold shadow-2xs"
+                                  ? "bg-[#FDE9E5] border-[#8F3032] text-[#8F3032] font-bold shadow-2xs ring-1 ring-[#8F3032]/30"
                                   : "bg-white border-[#E8D4CF] text-[#3A211D] hover:border-[#8F3032]/40"
                               }`}
                             >
@@ -414,6 +440,7 @@ export default function CustomOrderPage() {
                                 style={{ backgroundColor: swatch.hex }}
                               />
                               <span className="text-[11px]">{swatch.name}</span>
+                              {isSelected && <Check className="w-3 h-3 text-[#8F3032]" />}
                             </button>
                           );
                         })}
