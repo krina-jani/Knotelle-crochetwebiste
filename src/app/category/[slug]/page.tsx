@@ -15,6 +15,12 @@ interface CategoryPageProps {
   }>;
 }
 
+export function generateStaticParams() {
+  return CATEGORIES.map((category) => ({
+    slug: category.slug,
+  }));
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
   const category = CATEGORIES.find((c) => c.slug === slug);
