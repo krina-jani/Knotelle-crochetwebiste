@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -48,6 +48,7 @@ const QUICK_YARN_SWATCHES = [
 
 export default function CustomOrderPage() {
   const { showToast } = useToast();
+  const colorInputRef = useRef<HTMLInputElement>(null);
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [orderReferenceId, setOrderReferenceId] = useState("");
@@ -67,6 +68,28 @@ export default function CustomOrderPage() {
   const [customerEmail, setCustomerEmail] = useState("ananya.sharma@example.com");
   const [customerPhone, setCustomerPhone] = useState("+91 98765 43210");
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
+
+  const handleOpenColorPalette = () => {
+    if (colorInputRef.current) {
+      if ("showPicker" in HTMLInputElement.prototype) {
+        try {
+          colorInputRef.current.showPicker();
+          return;
+        } catch {
+          // Fallback to click
+        }
+      }
+      colorInputRef.current.click();
+    }
+  };
+
+  const handleColorPicked = (newColor: string) => {
+    setPickerColor(newColor);
+    if (!customColors.includes(newColor) && customColors.length < 6) {
+      setCustomColors((prev) => [...prev, newColor]);
+      showToast("Yarn Shade Added 🎨", `Added ${newColor.toUpperCase()} to your custom palette.`, "success");
+    }
+  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -287,33 +310,39 @@ export default function CustomOrderPage() {
                         </p>
                       </div>
 
-                      {/* Live Color Picker Input & Add Button */}
+                      {/* Live Color Picker Trigger & Add Button */}
                       <div className="flex items-center gap-2">
-                        <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E8D4CF] shadow-xs">
-                          <input
-                            type="color"
-                            value={pickerColor}
-                            onChange={(e) => setPickerColor(e.target.value)}
-                            className="w-7 h-7 rounded-lg cursor-pointer border-0 bg-transparent p-0 overflow-hidden"
-                            title="Choose custom shade"
-                          />
-                          <input
-                            type="text"
-                            value={pickerColor}
-                            onChange={(e) => setPickerColor(e.target.value)}
-                            className="w-20 text-xs font-mono font-bold uppercase text-[#3A211D] bg-transparent focus:outline-none"
-                            maxLength={7}
-                          />
-                        </div>
+                        {/* Hidden Native Color Input with Ref */}
+                        <input
+                          ref={colorInputRef}
+                          type="color"
+                          value={pickerColor}
+                          onChange={(e) => handleColorPicked(e.target.value)}
+                          className="sr-only"
+                          title="Open color palette"
+                        />
 
+                        {/* Interactive Color Swatch Box (Clicking opens color palette) */}
                         <button
                           type="button"
-                          onClick={() => {
-                            if (!customColors.includes(pickerColor) && customColors.length < 6) {
-                              setCustomColors([...customColors, pickerColor]);
-                            }
-                          }}
-                          className="px-3.5 py-2 rounded-xl bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-all flex items-center gap-1 shadow-xs cursor-pointer"
+                          onClick={handleOpenColorPalette}
+                          className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E8D4CF] shadow-xs hover:border-[#8F3032] transition-all cursor-pointer group"
+                          title="Click to open color palette"
+                        >
+                          <span
+                            className="w-5 h-5 rounded-md border border-black/15 shrink-0 shadow-2xs group-hover:scale-110 transition-transform"
+                            style={{ backgroundColor: pickerColor }}
+                          />
+                          <span className="text-xs font-mono font-bold uppercase text-[#3A211D]">
+                            {pickerColor}
+                          </span>
+                        </button>
+
+                        {/* + Add Color Button (Clicking opens color palette dialog directly) */}
+                        <button
+                          type="button"
+                          onClick={handleOpenColorPalette}
+                          className="px-4 py-2 rounded-xl bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] active:scale-95 transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
                           <span>Add Color</span>
