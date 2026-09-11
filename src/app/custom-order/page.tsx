@@ -112,19 +112,20 @@ export default function CustomOrderPage() {
     });
   };
 
-  const handleColorPicked = (newColor: string) => {
-    setPickerColor(newColor);
+  const handleAddCurrentColor = () => {
+    if (!pickerColor) return;
     setCustomColors((prev) => {
-      const isSelected = prev.some((c) => c.toLowerCase() === newColor.toLowerCase());
+      const isSelected = prev.some((c) => c.toLowerCase() === pickerColor.toLowerCase());
       if (isSelected) {
+        showToast("Already Added", `${pickerColor.toUpperCase()} is already in your selected shades.`, "info");
         return prev;
       }
       if (prev.length >= 6) {
         showToast("Maximum 6 Colors", "You can select up to 6 custom yarn shades.", "error");
         return prev;
       }
-      const updated = [...prev, newColor];
-      showToast("Yarn Shade Added 🎨", `Added ${newColor.toUpperCase()} (${updated.length}/6)`, "success");
+      const updated = [...prev, pickerColor];
+      showToast("Yarn Shade Added 🎨", `Added ${pickerColor.toUpperCase()} (${updated.length}/6)`, "success");
       return updated;
     });
   };
@@ -356,9 +357,9 @@ export default function CustomOrderPage() {
                           ref={colorInputRef}
                           type="color"
                           value={pickerColor}
-                          onChange={(e) => handleColorPicked(e.target.value)}
+                          onChange={(e) => setPickerColor(e.target.value)}
                           className="sr-only"
-                          title="Open color palette"
+                          title="Choose custom yarn color"
                         />
 
                         {/* Interactive Color Swatch Box (Clicking opens color palette) */}
@@ -366,7 +367,7 @@ export default function CustomOrderPage() {
                           type="button"
                           onClick={handleOpenColorPalette}
                           className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E7D1CC] shadow-xs hover:border-[#913638] transition-all cursor-pointer group"
-                          title="Click to open color palette"
+                          title="Click to pick color"
                         >
                           <span
                             className="w-5 h-5 rounded-md border border-black/15 shrink-0 shadow-2xs group-hover:scale-110 transition-transform"
@@ -377,10 +378,10 @@ export default function CustomOrderPage() {
                           </span>
                         </button>
 
-                        {/* + Add Color Button (Clicking opens color palette dialog directly) */}
+                        {/* + Add Color Button */}
                         <button
                           type="button"
-                          onClick={handleOpenColorPalette}
+                          onClick={handleAddCurrentColor}
                           className="px-4 py-2 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
