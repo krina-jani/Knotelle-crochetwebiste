@@ -178,18 +178,18 @@ export function MobileDrawer({ isOpen, onClose, onOpenSearch }: MobileDrawerProp
             {/* Contact Support */}
             <div className="pt-2 border-t border-[#E8D4CF] space-y-2 text-xs text-[#78635E]">
               <a
-                href="tel:+919876543210"
+                href="tel:+919773039243"
                 className="flex items-center gap-2 hover:text-[#8F3032] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
-                <span>+91 98765 43210</span>
+                <span>+91 97730 39243</span>
               </a>
               <a
-                href="mailto:hello@knotelle.com"
+                href="mailto:support@knotelle.in"
                 className="flex items-center gap-2 hover:text-[#8F3032] transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>hello@knotelle.com</span>
+                <span>support@knotelle.in</span>
               </a>
             </div>
           </div>

@@ -40,43 +40,43 @@ export function Footer() {
               <KnotelleCrownLogo className="h-16 w-16 sm:h-20 sm:w-20 shadow-lg rounded-full" />
             </Link>
 
-            {/* Social Media Colorful Icons Row */}
-            <div className="flex items-center gap-3 pt-1.5">
+            {/* Social Media Icons Row */}
+            <div className="flex items-center gap-2.5 pt-1.5 text-[#2E211E]">
               <a
                 href="https://instagram.com/knotelleindia"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-8 h-8 rounded-xl flex items-center justify-center shadow-xs hover:shadow-md transition-transform duration-300 hover:scale-115 active:scale-95"
+                className="w-8.5 h-8.5 rounded-full bg-white/85 backdrop-blur-xs border border-[#E7D1CC] shadow-xs flex items-center justify-center text-[#2E211E] hover:bg-[#913638] hover:text-white hover:border-[#913638] hover:scale-108 transition-all active:scale-95"
               >
-                <InstagramIcon className="w-7 h-7" />
+                <InstagramIcon className="w-4.5 h-4.5" />
               </a>
               <a
                 href="https://facebook.com/knotelleindia"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-8 h-8 rounded-xl flex items-center justify-center shadow-xs hover:shadow-md transition-transform duration-300 hover:scale-115 active:scale-95"
+                className="w-8.5 h-8.5 rounded-full bg-white/85 backdrop-blur-xs border border-[#E7D1CC] shadow-xs flex items-center justify-center text-[#2E211E] hover:bg-[#913638] hover:text-white hover:border-[#913638] hover:scale-108 transition-all active:scale-95"
               >
-                <FacebookIcon className="w-7 h-7" />
+                <FacebookIcon className="w-4.5 h-4.5" />
               </a>
               <a
                 href="https://pinterest.com/knotelleindia"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Pinterest"
-                className="w-8 h-8 rounded-xl flex items-center justify-center shadow-xs hover:shadow-md transition-transform duration-300 hover:scale-115 active:scale-95"
+                className="w-8.5 h-8.5 rounded-full bg-white/85 backdrop-blur-xs border border-[#E7D1CC] shadow-xs flex items-center justify-center text-[#2E211E] hover:bg-[#913638] hover:text-white hover:border-[#913638] hover:scale-108 transition-all active:scale-95"
               >
-                <PinterestIcon className="w-7 h-7" />
+                <PinterestIcon className="w-4.5 h-4.5" />
               </a>
               <a
                 href="https://youtube.com/@knotelleindia"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="w-8 h-8 rounded-xl flex items-center justify-center shadow-xs hover:shadow-md transition-transform duration-300 hover:scale-115 active:scale-95"
+                className="w-8.5 h-8.5 rounded-full bg-white/85 backdrop-blur-xs border border-[#E7D1CC] shadow-xs flex items-center justify-center text-[#2E211E] hover:bg-[#913638] hover:text-white hover:border-[#913638] hover:scale-108 transition-all active:scale-95"
               >
-                <YouTubeIcon className="w-7 h-7" />
+                <YouTubeIcon className="w-4.5 h-4.5" />
               </a>
             </div>
           </div>
