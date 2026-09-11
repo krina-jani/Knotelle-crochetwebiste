@@ -36,8 +36,8 @@ export function Footer() {
           
           {/* Left Block: Brand Identity + Socials */}
           <div className="flex flex-col items-start space-y-4 lg:pr-10 lg:border-r lg:border-[#E7D1CC]/90 shrink-0 w-full lg:w-auto">
-            <Link href="/" className="inline-block">
-              <KnotelleCrownLogo className="items-start text-left" />
+            <Link href="/" className="inline-block group">
+              <KnotelleCrownLogo size="lg" className="items-start text-left" />
             </Link>
 
             {/* Social Media Icons Row */}
