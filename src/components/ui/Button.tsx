@@ -33,25 +33,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 tracking-wide";
+      "inline-flex items-center justify-center font-semibold rounded-full transition-all duration-250 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 tracking-normal cursor-pointer select-none";
 
     const variants = {
       primary:
-        "bg-[#8F3032] text-white hover:bg-[#722628] shadow-sm hover:shadow-boutique-hover",
+        "bg-[#913638] text-white hover:bg-[#74292B] border border-transparent shadow-xs hover:shadow-boutique-hover active:bg-[#5E1F21]",
       secondary:
-        "bg-[#FDE9E5] text-[#8F3032] hover:bg-[#F4C7C1] border border-[#E8D4CF]",
+        "bg-white text-[#2E211E] hover:bg-[#FCE9E5] hover:text-[#913638] border border-[#E7D1CC] hover:border-[#EFB8B0] shadow-xs active:bg-[#FCE9E5]",
       outline:
-        "border border-[#8F3032] text-[#8F3032] hover:bg-[#8F3032] hover:text-white bg-transparent",
+        "border border-[#913638] text-[#913638] hover:bg-[#913638] hover:text-white bg-transparent active:bg-[#74292B]",
       ghost:
-        "text-[#3A211D] hover:bg-[#FDE9E5] hover:text-[#8F3032] bg-transparent",
+        "text-[#2E211E] hover:bg-[#FCE9E5] hover:text-[#913638] bg-transparent active:bg-[#FCE9E5]",
       gold:
-        "bg-[#C69A5A] text-white hover:bg-[#B38747] shadow-sm",
+        "bg-[#C89B61] text-white hover:bg-[#B38747] shadow-xs active:scale-[0.98]",
     };
 
     const sizes = {
-      sm: "text-xs px-4 py-2 gap-1.5",
-      md: "text-sm px-6 py-2.5 gap-2",
-      lg: "text-base px-8 py-3.5 gap-2.5 font-semibold",
+      sm: "text-xs px-3.5 py-1.5 gap-1.5",
+      md: "text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 gap-2",
+      lg: "text-sm sm:text-base px-7 sm:px-8 py-3.5 sm:py-4 gap-2.5 font-bold",
     };
 
     const combinedClassName = cn(

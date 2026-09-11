@@ -21,18 +21,18 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-[#FFF8F5] min-h-screen py-12 sm:py-16 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-3xl border border-[#E8D4CF] p-8 sm:p-10 shadow-boutique space-y-6 relative overflow-hidden">
+    <div className="bg-[#FFF9F6] min-h-screen py-10 sm:py-16 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white rounded-3xl border border-[#E7D1CC] p-6 sm:p-10 shadow-boutique space-y-6 relative overflow-hidden">
         
         {/* Header */}
         <div className="text-center space-y-2">
           <div className="flex justify-center mb-2">
-            <KnotelleCrownLogo className="h-16 w-16 sm:h-20 sm:w-20" />
+            <KnotelleCrownLogo className="h-14 w-14 sm:h-18 sm:w-18" />
           </div>
-          <h1 className="font-serif-luxury text-3xl font-bold text-[#3A211D]">
+          <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#2E211E]">
             Welcome Back
           </h1>
-          <p className="text-xs text-[#78635E]">
+          <p className="text-xs text-[#786864] leading-relaxed">
             Sign in to track orders, save wishlists, and request custom creations.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function LoginPage() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-xs font-semibold text-[#3A211D] block">
+            <label className="text-xs font-semibold text-[#2E211E] block">
               Email Address
             </label>
             <div className="relative">
@@ -50,18 +50,18 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] focus:outline-none focus:border-[#913638] transition-colors"
               />
-              <Mail className="w-4 h-4 text-[#78635E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Mail className="w-4 h-4 text-[#786864] absolute left-3.5 top-1/2 -translate-y-1/2" />
             </div>
           </div>
 
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-[#3A211D]">
+              <label className="text-xs font-semibold text-[#2E211E]">
                 Password
               </label>
-              <a href="#" className="text-[11px] text-[#8F3032] hover:underline">
+              <a href="#" className="text-[11px] text-[#913638] hover:underline">
                 Forgot password?
               </a>
             </div>
@@ -72,19 +72,19 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] focus:outline-none focus:border-[#913638] transition-colors"
               />
-              <Lock className="w-4 h-4 text-[#78635E] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Lock className="w-4 h-4 text-[#786864] absolute left-3.5 top-1/2 -translate-y-1/2" />
             </div>
           </div>
 
           <div className="flex items-center">
-            <label className="flex items-center gap-2 text-xs text-[#78635E] cursor-pointer">
+            <label className="flex items-center gap-2 text-xs text-[#786864] cursor-pointer">
               <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="rounded border-[#E8D4CF] text-[#8F3032] focus:ring-[#8F3032]"
+                className="rounded border-[#E7D1CC] text-[#913638] focus:ring-[#913638]"
               />
               <span>Remember me on this device</span>
             </label>
@@ -92,7 +92,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full py-3.5 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] shadow-md hover:shadow-boutique-hover transition-all flex items-center justify-center gap-2"
+            className="w-full py-3.5 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-sm hover:shadow-boutique-hover transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>Login to KNOTELLE</span>
             <ArrowRight className="w-4 h-4" />
@@ -100,10 +100,10 @@ export default function LoginPage() {
         </form>
 
         {/* Divider */}
-        <div className="flex items-center justify-center gap-3 text-xs text-[#78635E]">
-          <div className="h-px flex-1 bg-[#E8D4CF]" />
+        <div className="flex items-center justify-center gap-3 text-xs text-[#786864]">
+          <div className="h-px flex-1 bg-[#E7D1CC]" />
           <span>OR</span>
-          <div className="h-px flex-1 bg-[#E8D4CF]" />
+          <div className="h-px flex-1 bg-[#E7D1CC]" />
         </div>
 
         {/* Google Login */}
@@ -112,7 +112,7 @@ export default function LoginPage() {
             login("ananya.sharma@example.com");
             router.push("/account");
           }}
-          className="w-full py-3 rounded-full bg-white text-[#3A211D] border border-[#E8D4CF] text-xs font-semibold hover:bg-[#FFF8F5] transition-colors flex items-center justify-center gap-2.5"
+          className="w-full py-3 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] hover:border-[#EFB8B0] text-xs sm:text-sm font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer shadow-xs"
         >
           <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path
@@ -136,9 +136,9 @@ export default function LoginPage() {
         </button>
 
         {/* Footer */}
-        <p className="text-center text-xs text-[#78635E]">
+        <p className="text-center text-xs text-[#786864]">
           Don&apos;t have an account?{" "}
-          <Link href="/signup" className="text-[#8F3032] font-semibold hover:underline">
+          <Link href="/signup" className="text-[#913638] font-semibold hover:underline">
             Create one
           </Link>
         </p>

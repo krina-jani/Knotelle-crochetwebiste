@@ -180,7 +180,7 @@ export default function CustomOrderPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/shop"
-                className="w-full sm:w-auto px-8 py-3 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-colors"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs hover:shadow-boutique-hover transition-all text-center"
               >
                 Continue Browsing Boutique →
               </Link>
@@ -189,40 +189,41 @@ export default function CustomOrderPage() {
                   setIsSubmitted(false);
                   setStep(1);
                 }}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#FFF8F5] text-[#8F3032] border border-[#E8D4CF] text-xs font-semibold hover:bg-[#FDE9E5] transition-colors"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] text-xs sm:text-sm font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] shadow-xs transition-all cursor-pointer"
               >
                 Submit Another Request
               </button>
             </div>
           </div>
         ) : (
-          <div className="bg-white rounded-3xl border border-[#E8D4CF] p-6 sm:p-10 shadow-boutique">
+          <div className="bg-white rounded-3xl border border-[#E8D4CF] p-5 sm:p-8 lg:p-10 shadow-boutique">
             
             {/* Step Progress Bar */}
-            <div className="flex items-center justify-between max-w-xl mx-auto mb-10">
+            <div className="flex items-center justify-between max-w-xl mx-auto mb-8 sm:mb-10 px-1 sm:px-0">
               {[
                 { num: 1, title: "Category" },
                 { num: 2, title: "Colors" },
                 { num: 3, title: "Details" },
                 { num: 4, title: "Review" },
               ].map((s, idx) => (
-                <div key={s.num} className="flex items-center gap-2">
+                <div key={s.num} className="flex items-center gap-1.5 sm:gap-2">
                   <button
+                    type="button"
                     onClick={() => s.num < step && setStep(s.num)}
-                    className={`w-8 h-8 rounded-full text-xs font-bold flex items-center justify-center transition-colors ${
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-bold flex items-center justify-center transition-all ${
                       step === s.num
-                        ? "bg-[#8F3032] text-white ring-4 ring-[#8F3032]/20"
+                        ? "bg-[#913638] text-white ring-4 ring-[#913638]/20 shadow-xs"
                         : step > s.num
-                        ? "bg-[#FDE9E5] text-[#8F3032] border border-[#E8D4CF]"
-                        : "bg-[#FFF8F5] text-[#78635E] border border-[#E8D4CF]"
+                        ? "bg-[#FCE9E5] text-[#913638] border border-[#E7D1CC] cursor-pointer hover:bg-[#EFB8B0]"
+                        : "bg-[#FFF9F6] text-[#786864] border border-[#E7D1CC]"
                     }`}
                   >
                     {step > s.num ? "✓" : s.num}
                   </button>
-                  <span className={`text-xs font-semibold hidden sm:inline ${step >= s.num ? "text-[#3A211D]" : "text-[#78635E]"}`}>
+                  <span className={`text-xs font-semibold hidden sm:inline ${step >= s.num ? "text-[#2E211E]" : "text-[#786864]"}`}>
                     {s.title}
                   </span>
-                  {idx < 3 && <div className="w-8 sm:w-16 h-0.5 bg-[#E8D4CF] ml-2" />}
+                  {idx < 3 && <div className="w-6 sm:w-14 h-0.5 bg-[#E7D1CC] ml-1 sm:ml-2" />}
                 </div>
               ))}
             </div>
@@ -247,15 +248,15 @@ export default function CustomOrderPage() {
                         type="button"
                         key={cat.id}
                         onClick={() => setCategory(cat.name)}
-                        className={`p-4 rounded-2xl border text-left transition-all flex flex-col items-center sm:items-start text-center sm:text-left ${
+                        className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex flex-col items-center sm:items-start text-center sm:text-left cursor-pointer ${
                           category === cat.name
-                            ? "border-[#8F3032] bg-[#FDE9E5] ring-2 ring-[#8F3032]/30 text-[#8F3032]"
-                            : "border-[#E8D4CF] bg-[#FFF8F5] hover:bg-white text-[#3A211D]"
+                            ? "border-[#913638] bg-[#FCE9E5] ring-2 ring-[#913638]/25 text-[#913638] font-bold"
+                            : "border-[#E7D1CC] bg-[#FFF9F6] hover:bg-white text-[#2E211E]"
                         }`}
                       >
-                        <FlowerIcon className="w-6 h-6 text-[#8F3032] mb-2" />
+                        <FlowerIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#913638] mb-2" />
                         <span className="text-xs font-bold">{cat.name}</span>
-                        <span className="text-[10px] text-[#78635E] mt-0.5 line-clamp-1">
+                        <span className="text-[10px] text-[#786864] mt-0.5 line-clamp-1">
                           Custom pattern
                         </span>
                       </button>
@@ -263,15 +264,15 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setCategory("Something Completely New")}
-                      className={`p-4 rounded-2xl border text-left transition-all flex flex-col items-center sm:items-start text-center sm:text-left ${
+                      className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all flex flex-col items-center sm:items-start text-center sm:text-left cursor-pointer ${
                         category === "Something Completely New"
-                          ? "border-[#8F3032] bg-[#FDE9E5] ring-2 ring-[#8F3032]/30 text-[#8F3032]"
-                          : "border-[#E8D4CF] bg-[#FFF8F5] hover:bg-white text-[#3A211D]"
+                          ? "border-[#913638] bg-[#FCE9E5] ring-2 ring-[#913638]/25 text-[#913638] font-bold"
+                          : "border-[#E7D1CC] bg-[#FFF9F6] hover:bg-white text-[#2E211E]"
                       }`}
                     >
-                      <Sparkles className="w-6 h-6 text-[#C69A5A] mb-2" />
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#C89B61] mb-2" />
                       <span className="text-xs font-bold">Custom Concept</span>
-                      <span className="text-[10px] text-[#78635E] mt-0.5">
+                      <span className="text-[10px] text-[#786864] mt-0.5">
                         Brand new idea
                       </span>
                     </button>
@@ -281,7 +282,7 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="px-8 py-3 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-colors flex items-center gap-2"
+                      className="px-7 sm:px-8 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs hover:shadow-boutique-hover transition-all flex items-center gap-2 cursor-pointer"
                     >
                       <span>Next: Choose Color Palette</span>
                       <ArrowRight className="w-4 h-4" />
@@ -308,18 +309,18 @@ export default function CustomOrderPage() {
                         type="button"
                         key={pal.name}
                         onClick={() => setSelectedPalette(pal.name)}
-                        className={`p-4 rounded-2xl border text-left transition-all ${
+                        className={`p-4 rounded-2xl border text-left transition-all cursor-pointer ${
                           selectedPalette === pal.name
-                            ? "border-[#8F3032] bg-[#FDE9E5] ring-2 ring-[#8F3032]/30"
-                            : "border-[#E8D4CF] bg-[#FFF8F5] hover:bg-white"
+                            ? "border-[#913638] bg-[#FCE9E5] ring-2 ring-[#913638]/25"
+                            : "border-[#E7D1CC] bg-[#FFF9F6] hover:bg-white"
                         }`}
                       >
                         <div className="flex items-center justify-between mb-3">
-                          <span className="text-xs font-bold text-[#3A211D]">
+                          <span className="text-xs font-bold text-[#2E211E]">
                             {pal.name}
                           </span>
                           {selectedPalette === pal.name && (
-                            <CheckCircle2 className="w-4 h-4 text-[#8F3032]" />
+                            <CheckCircle2 className="w-4 h-4 text-[#913638]" />
                           )}
                         </div>
                         <div className="flex items-center gap-2">
@@ -336,11 +337,11 @@ export default function CustomOrderPage() {
                   </div>
 
                   {/* Interactive Color Picker Section */}
-                  <div className="p-4 sm:p-5 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] space-y-4">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] space-y-4">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
-                        <label className="text-xs font-bold text-[#3A211D] flex items-center gap-1.5">
-                          <Pipette className="w-3.5 h-3.5 text-[#8F3032]" />
+                        <label className="text-xs font-bold text-[#2E211E] flex items-center gap-1.5">
+                          <Pipette className="w-3.5 h-3.5 text-[#913638]" />
                           <span>Custom Yarn Color Picker:</span>
                         </label>
                         <p className="text-[11px] text-[#78635E] mt-0.5">
@@ -364,14 +365,14 @@ export default function CustomOrderPage() {
                         <button
                           type="button"
                           onClick={handleOpenColorPalette}
-                          className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E8D4CF] shadow-xs hover:border-[#8F3032] transition-all cursor-pointer group"
+                          className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E7D1CC] shadow-xs hover:border-[#913638] transition-all cursor-pointer group"
                           title="Click to open color palette"
                         >
                           <span
                             className="w-5 h-5 rounded-md border border-black/15 shrink-0 shadow-2xs group-hover:scale-110 transition-transform"
                             style={{ backgroundColor: pickerColor }}
                           />
-                          <span className="text-xs font-mono font-bold uppercase text-[#3A211D]">
+                          <span className="text-xs font-mono font-bold uppercase text-[#2E211E]">
                             {pickerColor}
                           </span>
                         </button>
@@ -380,7 +381,7 @@ export default function CustomOrderPage() {
                         <button
                           type="button"
                           onClick={handleOpenColorPalette}
-                          className="px-4 py-2 rounded-xl bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] active:scale-95 transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                          className="px-4 py-2 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
                         >
                           <Plus className="w-3.5 h-3.5" />
                           <span>Add Color</span>
@@ -398,7 +399,7 @@ export default function CustomOrderPage() {
                           <button
                             type="button"
                             onClick={() => setCustomColors([])}
-                            className="text-[10px] text-[#8F3032] hover:underline font-medium cursor-pointer"
+                            className="text-[10px] text-[#913638] hover:underline font-medium cursor-pointer"
                           >
                             Clear All
                           </button>
@@ -416,27 +417,27 @@ export default function CustomOrderPage() {
                             return (
                               <div
                                 key={`${color}-${idx}`}
-                                className="flex items-center gap-2 pl-2 pr-2.5 py-1.5 rounded-2xl bg-white border-2 border-[#8F3032] shadow-xs animate-in zoom-in-95 duration-200"
+                                className="flex items-center gap-2 pl-2 pr-2.5 py-1.5 rounded-2xl bg-white border-2 border-[#913638] shadow-xs animate-in zoom-in-95 duration-200"
                               >
                                 <span
                                   className="w-5 h-5 rounded-md border border-black/15 shrink-0 shadow-2xs"
                                   style={{ backgroundColor: color }}
                                 />
                                 <div className="flex flex-col">
-                                  <span className="text-[11px] font-bold text-[#3A211D] leading-tight">
+                                  <span className="text-[11px] font-bold text-[#2E211E] leading-tight">
                                     {details.name}
                                   </span>
                                   <span className="text-[9px] font-mono text-[#78635E] uppercase">
                                     {color}
                                   </span>
                                 </div>
-                                <span className="w-4 h-4 rounded-full bg-[#8F3032] text-white flex items-center justify-center shrink-0 ml-0.5">
+                                <span className="w-4 h-4 rounded-full bg-[#913638] text-white flex items-center justify-center shrink-0 ml-0.5">
                                   <Check className="w-2.5 h-2.5 stroke-[3]" />
                                 </span>
                                 <button
                                   type="button"
                                   onClick={() => toggleColorSelection(color, details.name)}
-                                  className="ml-0.5 p-0.5 rounded-full text-[#78635E] hover:text-[#8F3032] hover:bg-[#FDE9E5] transition-colors cursor-pointer"
+                                  className="ml-0.5 p-0.5 rounded-full text-[#78635E] hover:text-[#913638] hover:bg-[#FCE9E5] transition-colors cursor-pointer"
                                   aria-label={`Remove color ${details.name}`}
                                   title={`Remove ${details.name}`}
                                 >
@@ -466,8 +467,8 @@ export default function CustomOrderPage() {
                               onClick={() => toggleColorSelection(swatch.hex, swatch.name)}
                               className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs transition-all cursor-pointer ${
                                 isSelected
-                                  ? "bg-[#FDE9E5] border-[#8F3032] text-[#8F3032] font-bold shadow-xs ring-2 ring-[#8F3032]/20"
-                                  : "bg-white border-[#E8D4CF] text-[#3A211D] hover:border-[#8F3032]/40 hover:bg-[#FFF8F5]"
+                                  ? "bg-[#FCE9E5] border-[#913638] text-[#913638] font-bold shadow-xs ring-2 ring-[#913638]/20"
+                                  : "bg-white border-[#E7D1CC] text-[#2E211E] hover:border-[#913638]/40 hover:bg-[#FFF9F6]"
                               }`}
                             >
                               <span
@@ -476,7 +477,7 @@ export default function CustomOrderPage() {
                               />
                               <span className="text-[11px]">{swatch.name}</span>
                               {isSelected && (
-                                <span className="w-3.5 h-3.5 rounded-full bg-[#8F3032] text-white flex items-center justify-center shrink-0 ml-0.5">
+                                <span className="w-3.5 h-3.5 rounded-full bg-[#913638] text-white flex items-center justify-center shrink-0 ml-0.5">
                                   <Check className="w-2.5 h-2.5 stroke-[3]" />
                                 </span>
                               )}
@@ -489,7 +490,7 @@ export default function CustomOrderPage() {
 
                   {/* Specific Custom Color Notes */}
                   <div className="space-y-2 pt-2">
-                    <label className="text-xs font-semibold text-[#3A211D] block">
+                    <label className="text-xs font-semibold text-[#2E211E] block">
                       Specific Color Requests / Pantone / Hex (Optional):
                     </label>
                     <input
@@ -497,7 +498,7 @@ export default function CustomOrderPage() {
                       value={customColorNotes}
                       onChange={(e) => setCustomColorNotes(e.target.value)}
                       placeholder="e.g. 'Match my blush pink bridesmaid lehenga' or 'Sage green with cream tips'"
-                      className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] placeholder-[#78635E]/60 focus:outline-none focus:border-[#8F3032]"
+                      className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] placeholder-[#78635E]/60 focus:outline-none focus:border-[#913638]"
                     />
                   </div>
 
@@ -505,7 +506,7 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="px-6 py-3 rounded-full border border-[#E8D4CF] text-xs font-semibold text-[#3A211D] hover:bg-[#FFF8F5] transition-colors flex items-center gap-2"
+                      className="px-6 py-3 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] text-xs sm:text-sm font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] shadow-xs transition-all flex items-center gap-2 cursor-pointer"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -513,7 +514,7 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="px-8 py-3 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-colors flex items-center gap-2"
+                      className="px-7 sm:px-8 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs hover:shadow-boutique-hover transition-all flex items-center gap-2 cursor-pointer"
                     >
                       <span>Next: Size & Details</span>
                       <ArrowRight className="w-4 h-4" />
@@ -526,7 +527,7 @@ export default function CustomOrderPage() {
               {step === 3 && (
                 <div className="space-y-6 animate-in fade-in duration-300">
                   <div>
-                    <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#3A211D]">
+                    <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#2E211E]">
                       Step 3: Size, Personalization & Reference Photo
                     </h3>
                     <p className="text-xs sm:text-sm text-[#78635E] mt-1">
@@ -537,13 +538,13 @@ export default function CustomOrderPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Size Selector */}
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         Size Preference:
                       </label>
                       <select
                         value={sizePreference}
                         onChange={(e) => setSizePreference(e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs font-medium text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs font-medium text-[#2E211E] focus:outline-none focus:border-[#913638]"
                       >
                         <option value="Mini / Pocket Sized">Mini / Pocket Sized</option>
                         <option value="Standard / Medium">Standard / Medium</option>
@@ -554,7 +555,7 @@ export default function CustomOrderPage() {
 
                     {/* Personalization Initials */}
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         Personalization / Name / Initial Tag:
                       </label>
                       <input
@@ -562,14 +563,14 @@ export default function CustomOrderPage() {
                         value={personalization}
                         onChange={(e) => setPersonalization(e.target.value)}
                         placeholder="e.g. 'To Ananya with Love', 'Initials: R&S'"
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] placeholder-[#78635E]/60 focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] placeholder-[#78635E]/60 focus:outline-none focus:border-[#913638]"
                       />
                     </div>
                   </div>
 
                   {/* Design Notes */}
                   <div className="space-y-2">
-                    <label className="text-xs font-semibold text-[#3A211D] block">
+                    <label className="text-xs font-semibold text-[#2E211E] block">
                       Design Notes & Special Requests:
                     </label>
                     <textarea
@@ -577,30 +578,30 @@ export default function CustomOrderPage() {
                       value={designNotes}
                       onChange={(e) => setDesignNotes(e.target.value)}
                       placeholder="Describe shape, number of flowers, special details, yarn texture preference..."
-                      className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] placeholder-[#78635E]/60 focus:outline-none focus:border-[#8F3032]"
+                      className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] placeholder-[#78635E]/60 focus:outline-none focus:border-[#913638]"
                     />
                   </div>
 
                   {/* Reference Image Upload Box */}
                   <div className="space-y-2">
-                    <label className="text-xs font-semibold text-[#3A211D] block">
+                    <label className="text-xs font-semibold text-[#2E211E] block">
                       Upload Reference Image / Sketch (Optional):
                     </label>
-                    <div className="border-2 border-dashed border-[#E8D4CF] rounded-3xl p-6 text-center hover:border-[#8F3032] transition-colors bg-[#FFF8F5] relative">
+                    <div className="border-2 border-dashed border-[#E7D1CC] rounded-3xl p-6 text-center hover:border-[#913638] transition-colors bg-[#FFF9F6] relative">
                       <input
                         type="file"
                         accept="image/*"
                         onChange={handleFileUpload}
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                       />
-                      <UploadCloud className="w-8 h-8 text-[#8F3032] mx-auto mb-2" />
+                      <UploadCloud className="w-8 h-8 text-[#913638] mx-auto mb-2" />
                       {uploadedFileName ? (
-                        <p className="text-xs font-bold text-[#8F3032]">
+                        <p className="text-xs font-bold text-[#913638]">
                           Attached: {uploadedFileName}
                         </p>
                       ) : (
                         <>
-                          <p className="text-xs font-semibold text-[#3A211D]">
+                          <p className="text-xs font-semibold text-[#2E211E]">
                             Drag & drop or browse photos from your phone / computer
                           </p>
                           <p className="text-[10px] text-[#78635E] mt-1">
@@ -614,13 +615,13 @@ export default function CustomOrderPage() {
                   {/* Urgency & Timeline */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         Turnaround Urgency:
                       </label>
                       <select
                         value={urgency}
                         onChange={(e) => setUrgency(e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs font-medium text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs font-medium text-[#2E211E] focus:outline-none focus:border-[#913638]"
                       >
                         <option value="Standard (7-10 days)">Standard (7-10 days)</option>
                         <option value="Express (4-6 days)">Express (4-6 days)</option>
@@ -629,13 +630,13 @@ export default function CustomOrderPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         Estimated Budget Range:
                       </label>
                       <select
                         value={budgetRange}
                         onChange={(e) => setBudgetRange(e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs font-medium text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs font-medium text-[#2E211E] focus:outline-none focus:border-[#913638]"
                       >
                         <option value="₹500 – ₹1,000">₹500 – ₹1,000</option>
                         <option value="₹1,000 – ₹2,500">₹1,000 – ₹2,500</option>
@@ -649,7 +650,7 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="px-6 py-3 rounded-full border border-[#E8D4CF] text-xs font-semibold text-[#3A211D] hover:bg-[#FFF8F5] transition-colors flex items-center gap-2"
+                      className="px-6 py-3 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] text-xs sm:text-sm font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] shadow-xs transition-all flex items-center gap-2 cursor-pointer"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -657,7 +658,7 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setStep(4)}
-                      className="px-8 py-3 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-colors flex items-center gap-2"
+                      className="px-7 sm:px-8 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs hover:shadow-boutique-hover transition-all flex items-center gap-2 cursor-pointer"
                     >
                       <span>Next: Review & Contact</span>
                       <ArrowRight className="w-4 h-4" />
@@ -670,7 +671,7 @@ export default function CustomOrderPage() {
               {step === 4 && (
                 <div className="space-y-6 animate-in fade-in duration-300">
                   <div>
-                    <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#3A211D]">
+                    <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#2E211E]">
                       Step 4: Review & Your Contact Details
                     </h3>
                     <p className="text-xs sm:text-sm text-[#78635E] mt-1">
@@ -679,15 +680,15 @@ export default function CustomOrderPage() {
                   </div>
 
                   {/* Summary Box */}
-                  <div className="p-5 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] space-y-2 text-xs">
+                  <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] space-y-2 text-xs">
                     <div className="flex justify-between border-b border-[#E8D4CF]/60 pb-2">
                       <span className="text-[#78635E]">Item Type:</span>
-                      <strong className="text-[#3A211D]">{category}</strong>
+                      <strong className="text-[#2E211E]">{category}</strong>
                     </div>
                     <div className="flex justify-between items-center border-b border-[#E8D4CF]/60 pb-2">
                       <span className="text-[#78635E]">Color Palette:</span>
                       <div className="flex items-center gap-2">
-                        <strong className="text-[#3A211D]">
+                        <strong className="text-[#2E211E]">
                           {selectedPalette} {customColorNotes && `(${customColorNotes})`}
                         </strong>
                         {customColors.length > 0 && (
@@ -706,24 +707,24 @@ export default function CustomOrderPage() {
                     </div>
                     <div className="flex justify-between border-b border-[#E8D4CF]/60 pb-2">
                       <span className="text-[#78635E]">Size Preference:</span>
-                      <strong className="text-[#3A211D]">{sizePreference}</strong>
+                      <strong className="text-[#2E211E]">{sizePreference}</strong>
                     </div>
                     {personalization && (
                       <div className="flex justify-between border-b border-[#E8D4CF]/60 pb-2">
                         <span className="text-[#78635E]">Personalization Tag:</span>
-                        <strong className="text-[#8F3032]">&ldquo;{personalization}&rdquo;</strong>
+                        <strong className="text-[#913638]">&ldquo;{personalization}&rdquo;</strong>
                       </div>
                     )}
                     <div className="flex justify-between">
                       <span className="text-[#78635E]">Timeline:</span>
-                      <strong className="text-[#3A211D]">{urgency}</strong>
+                      <strong className="text-[#2E211E]">{urgency}</strong>
                     </div>
                   </div>
 
                   {/* Contact Fields */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         Your Full Name *
                       </label>
                       <input
@@ -731,12 +732,12 @@ export default function CustomOrderPage() {
                         required
                         value={customerName}
                         onChange={(e) => setCustomerName(e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] focus:outline-none focus:border-[#913638]"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         WhatsApp Phone Number *
                       </label>
                       <input
@@ -744,12 +745,12 @@ export default function CustomOrderPage() {
                         required
                         value={customerPhone}
                         onChange={(e) => setCustomerPhone(e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] focus:outline-none focus:border-[#913638]"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#3A211D] block">
+                      <label className="text-xs font-semibold text-[#2E211E] block">
                         Email Address *
                       </label>
                       <input
@@ -757,7 +758,7 @@ export default function CustomOrderPage() {
                         required
                         value={customerEmail}
                         onChange={(e) => setCustomerEmail(e.target.value)}
-                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] text-xs text-[#3A211D] focus:outline-none focus:border-[#8F3032]"
+                        className="w-full px-4 py-3 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] text-xs text-[#2E211E] focus:outline-none focus:border-[#913638]"
                       />
                     </div>
                   </div>
@@ -766,14 +767,14 @@ export default function CustomOrderPage() {
                     <button
                       type="button"
                       onClick={() => setStep(3)}
-                      className="px-6 py-3 rounded-full border border-[#E8D4CF] text-xs font-semibold text-[#3A211D] hover:bg-[#FFF8F5] transition-colors flex items-center gap-2"
+                      className="px-6 py-3 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] text-xs sm:text-sm font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] shadow-xs transition-all flex items-center gap-2 cursor-pointer"
                     >
                       <ArrowLeft className="w-4 h-4" />
                       <span>Back</span>
                     </button>
                     <button
                       type="submit"
-                      className="px-8 py-3.5 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] shadow-md hover:shadow-boutique-hover transition-all flex items-center gap-2"
+                      className="px-8 py-3.5 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] shadow-xs hover:shadow-boutique-hover transition-all flex items-center gap-2 active:scale-[0.98] cursor-pointer"
                     >
                       <Send className="w-4 h-4" />
                       <span>Send Custom Request →</span>

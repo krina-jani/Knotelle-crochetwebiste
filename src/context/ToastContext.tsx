@@ -42,41 +42,41 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className="pointer-events-auto flex items-start gap-3 p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-[#E8D4CF] shadow-boutique-hover transition-all animate-in slide-in-from-bottom-5 duration-300"
+            className="pointer-events-auto flex items-start gap-3 p-4 bg-white/95 backdrop-blur-md rounded-2xl border border-[#E7D1CC] shadow-boutique-hover transition-all animate-in slide-in-from-bottom-5 duration-300"
           >
             <div className="shrink-0 mt-0.5">
               {toast.type === "cart" && (
-                <div className="w-8 h-8 rounded-full bg-[#FDE9E5] text-[#8F3032] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#FCE9E5] text-[#913638] flex items-center justify-center">
                   <ShoppingBag className="w-4 h-4" />
                 </div>
               )}
               {toast.type === "wishlist" && (
-                <div className="w-8 h-8 rounded-full bg-[#FDE9E5] text-[#8F3032] flex items-center justify-center">
-                  <Heart className="w-4 h-4 fill-[#8F3032]" />
+                <div className="w-8 h-8 rounded-full bg-[#FCE9E5] text-[#913638] flex items-center justify-center">
+                  <Heart className="w-4 h-4 fill-[#913638]" />
                 </div>
               )}
               {toast.type === "success" && (
-                <div className="w-8 h-8 rounded-full bg-[#FDE9E5] text-[#8F3032] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#FCE9E5] text-[#913638] flex items-center justify-center">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
               )}
               {(toast.type === "error" || toast.type === "info") && (
-                <div className="w-8 h-8 rounded-full bg-[#FDE9E5] text-[#8F3032] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[#FCE9E5] text-[#913638] flex items-center justify-center">
                   <AlertCircle className="w-4 h-4" />
                 </div>
               )}
             </div>
 
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-[#3A211D]">{toast.title}</p>
+              <p className="text-sm font-semibold text-[#2E211E]">{toast.title}</p>
               {toast.message && (
-                <p className="text-xs text-[#78635E] mt-0.5 leading-relaxed">{toast.message}</p>
+                <p className="text-xs text-[#786864] mt-0.5 leading-relaxed">{toast.message}</p>
               )}
             </div>
 
             <button
               onClick={() => removeToast(toast.id)}
-              className="text-[#78635E] hover:text-[#3A211D] transition-colors p-1"
+              className="text-[#786864] hover:text-[#2E211E] transition-colors p-1 cursor-pointer"
               aria-label="Close notification"
             >
               <X className="w-4 h-4" />

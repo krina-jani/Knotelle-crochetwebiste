@@ -97,7 +97,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
   };
 
   return (
-    <div className="bg-[#FFF8F5] min-h-screen py-8 lg:py-12">
+    <div className="bg-[#FFF9F6] min-h-screen py-8 lg:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumbs */}
@@ -111,12 +111,12 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         />
 
         {/* Product Showcase: Left Gallery, Right Details */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 bg-white rounded-3xl border border-[#E8D4CF] p-6 sm:p-10 shadow-boutique mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 bg-white rounded-3xl border border-[#E7D1CC] p-6 sm:p-10 shadow-boutique mb-16">
           
           {/* Left Gallery (Spans 6 cols on lg) */}
           <div className="lg:col-span-6 space-y-4">
             {/* Main Stage Image with Zoom feel */}
-            <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-[#FFF8F5] border border-[#E8D4CF]">
+            <div className="relative aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-[#FFF9F6] border border-[#E7D1CC]">
               <Image
                 src={product.images[selectedImageIndex] || product.images[0]}
                 alt={product.name}
@@ -130,11 +130,11 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               <button
                 onClick={() => toggleWishlist(product)}
                 aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
-                className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-[#E8D4CF] flex items-center justify-center text-[#78635E] hover:text-[#8F3032] hover:bg-white transition-all shadow-md active:scale-95"
+                className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-[#E7D1CC] flex items-center justify-center text-[#786864] hover:text-[#913638] hover:bg-white transition-all shadow-md active:scale-95 cursor-pointer"
               >
                 <Heart
                   className={`w-5 h-5 transition-all ${
-                    isWishlisted ? "fill-[#8F3032] text-[#8F3032] scale-110" : ""
+                    isWishlisted ? "fill-[#913638] text-[#913638] scale-110" : ""
                   }`}
                 />
               </button>
@@ -159,10 +159,10 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                   <button
                     key={idx}
                     onClick={() => setSelectedImageIndex(idx)}
-                    className={`relative w-20 h-20 rounded-xl overflow-hidden bg-[#FFF8F5] shrink-0 border-2 transition-all ${
+                    className={`relative w-20 h-20 rounded-xl overflow-hidden bg-[#FFF9F6] shrink-0 border-2 transition-all cursor-pointer ${
                       selectedImageIndex === idx
-                        ? "border-[#8F3032] ring-2 ring-[#8F3032]/20"
-                        : "border-[#E8D4CF] opacity-70 hover:opacity-100"
+                        ? "border-[#913638] ring-2 ring-[#913638]/20"
+                        : "border-[#E7D1CC] opacity-70 hover:opacity-100"
                     }`}
                   >
                     <Image
@@ -186,13 +186,13 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               <div className="flex items-center justify-between gap-4">
                 <Link
                   href={`/category/${product.categorySlug}`}
-                  className="text-xs uppercase tracking-widest text-[#8F3032] font-semibold hover:underline"
+                  className="text-xs uppercase tracking-widest text-[#913638] font-semibold hover:underline"
                 >
                   {product.category}
                 </Link>
                 <button
                   onClick={handleShare}
-                  className="text-[#78635E] hover:text-[#8F3032] flex items-center gap-1 text-xs transition-colors"
+                  className="text-[#786864] hover:text-[#913638] flex items-center gap-1 text-xs transition-colors cursor-pointer"
                 >
                   <Share2 className="w-4 h-4" />
                   <span>Share</span>
@@ -200,49 +200,49 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               </div>
 
               {/* Product Title */}
-              <h1 className="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl font-bold text-[#3A211D]">
+              <h1 className="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2E211E]">
                 {product.name}
               </h1>
 
               {/* Star Rating & Review count */}
               <div className="flex items-center gap-3">
                 <StarRating rating={product.rating} size="md" showNumber reviewCount={product.reviewCount} />
-                <span className="text-xs text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full font-medium border border-emerald-200">
+                <span className="text-xs text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full font-medium border border-emerald-200">
                   {product.stock > 0 ? "In Stock & Ready to Ship" : "Made to Order"}
                 </span>
               </div>
 
               {/* Price */}
               <div className="flex items-baseline gap-3 pt-1">
-                <span className="text-2xl sm:text-3xl font-bold text-[#8F3032]">
+                <span className="text-2xl sm:text-3xl font-bold text-[#913638]">
                   ₹{product.price.toLocaleString("en-IN")}
                 </span>
                 {product.comparePrice && (
-                  <span className="text-base text-[#78635E] line-through">
+                  <span className="text-base text-[#786864] line-through">
                     ₹{product.comparePrice.toLocaleString("en-IN")}
                   </span>
                 )}
-                <span className="text-xs text-[#78635E]">
+                <span className="text-xs text-[#786864]">
                   (Inclusive of all taxes & handmade fees)
                 </span>
               </div>
 
               {/* Short Description */}
-              <p className="text-sm text-[#78635E] leading-relaxed">
+              <p className="text-sm text-[#786864] leading-relaxed">
                 {product.description}
               </p>
 
               {/* Color Selection */}
               {product.colors && product.colors.length > 0 && (
-                <div className="space-y-2 pt-2 border-t border-[#E8D4CF]">
+                <div className="space-y-2 pt-2 border-t border-[#E7D1CC]">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-[#3A211D]">
+                    <span className="font-semibold text-[#2E211E]">
                       Yarn Color:{" "}
-                      <strong className="text-[#8F3032]">{selectedColor.name}</strong>
+                      <strong className="text-[#913638]">{selectedColor.name}</strong>
                     </span>
                     <Link
                       href="/custom-order"
-                      className="text-[11px] text-[#8F3032] hover:underline"
+                      className="text-[11px] text-[#913638] hover:underline"
                     >
                       Want custom colors? →
                     </Link>
@@ -252,10 +252,10 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                       <button
                         key={color.name}
                         onClick={() => setSelectedColor(color)}
-                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all ${
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium transition-all active:scale-[0.98] cursor-pointer ${
                           selectedColor.name === color.name
-                            ? "border-[#8F3032] bg-[#FDE9E5] text-[#8F3032] ring-1 ring-[#8F3032]"
-                            : "border-[#E8D4CF] hover:bg-[#FFF8F5] text-[#3A211D]"
+                            ? "border-[#913638] bg-[#FCE9E5] text-[#913638] ring-1 ring-[#913638]"
+                            : "border-[#E7D1CC] bg-white hover:bg-[#FFF9F6] text-[#2E211E]"
                         }`}
                       >
                         <span
@@ -264,7 +264,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                         />
                         <span>{color.name}</span>
                         {selectedColor.name === color.name && (
-                          <Check className="w-3 h-3 text-[#8F3032]" />
+                          <Check className="w-3 h-3 text-[#913638]" />
                         )}
                       </button>
                     ))}
@@ -275,7 +275,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               {/* Size Selection (if available) */}
               {product.sizes && product.sizes.length > 0 && (
                 <div className="space-y-2 pt-2">
-                  <span className="text-xs font-semibold text-[#3A211D] block">
+                  <span className="text-xs font-semibold text-[#2E211E] block">
                     Size / Variant:
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -283,10 +283,10 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                       <button
                         key={size}
                         onClick={() => setSelectedSize(size)}
-                        className={`px-3.5 py-1.5 rounded-full border text-xs font-medium transition-all ${
+                        className={`px-3.5 py-1.5 rounded-full border text-xs font-medium transition-all active:scale-[0.98] cursor-pointer ${
                           selectedSize === size
-                            ? "border-[#8F3032] bg-[#8F3032] text-white"
-                            : "border-[#E8D4CF] hover:bg-[#FFF8F5] text-[#3A211D]"
+                            ? "border-[#913638] bg-[#913638] text-white shadow-xs"
+                            : "border-[#E7D1CC] bg-white hover:bg-[#FCE9E5] hover:text-[#913638] text-[#2E211E]"
                         }`}
                       >
                         {size}
@@ -298,9 +298,9 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
               {/* Custom Personalization Input (Optional) */}
               {product.isCustomizable && (
-                <div className="p-4 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] space-y-2">
+                <div className="p-4 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] space-y-2">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-semibold text-[#3A211D] flex items-center gap-1.5">
+                    <label className="text-xs font-semibold text-[#2E211E] flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5 text-[#C69A5A]" />
                       <span>Add Name / Initials / Gift Tag Note (Free):</span>
                     </label>
@@ -311,9 +311,9 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                     value={customText}
                     onChange={(e) => setCustomText(e.target.value)}
                     placeholder="e.g. 'For Rhea 🌸' or 'Initials: A.S.'"
-                    className="w-full px-3.5 py-2 rounded-xl bg-white border border-[#E8D4CF] text-xs text-[#3A211D] placeholder-[#78635E]/50 focus:outline-none focus:border-[#8F3032]"
+                    className="w-full px-3.5 py-2 rounded-xl bg-white border border-[#E7D1CC] text-xs text-[#2E211E] placeholder-[#786864]/60 focus:outline-none focus:border-[#913638]"
                   />
-                  <p className="text-[10px] text-[#78635E]">
+                  <p className="text-[10px] text-[#786864]">
                     Our artisan will stitch or write your customized message on the boutique tag.
                   </p>
                 </div>
@@ -322,21 +322,21 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               {/* Quantity Selector & Action Buttons */}
               <div className="space-y-3 pt-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-semibold text-[#3A211D]">Quantity:</span>
-                  <div className="flex items-center border border-[#E8D4CF] rounded-full bg-white overflow-hidden">
+                  <span className="text-xs font-semibold text-[#2E211E]">Quantity:</span>
+                  <div className="flex items-center border border-[#E7D1CC] rounded-full bg-white overflow-hidden shadow-xs">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="px-3 py-1.5 text-[#78635E] hover:text-[#3A211D] hover:bg-[#FDE9E5] transition-colors"
+                      className="px-3 py-1.5 text-[#786864] hover:text-[#2E211E] hover:bg-[#FCE9E5] transition-colors cursor-pointer"
                       aria-label="Decrease quantity"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <span className="px-3 text-xs font-bold text-[#3A211D] min-w-[24px] text-center">
+                    <span className="px-3 text-xs font-bold text-[#2E211E] min-w-[24px] text-center">
                       {quantity}
                     </span>
                     <button
                       onClick={() => setQuantity(quantity + 1)}
-                      className="px-3 py-1.5 text-[#78635E] hover:text-[#3A211D] hover:bg-[#FDE9E5] transition-colors"
+                      className="px-3 py-1.5 text-[#786864] hover:text-[#2E211E] hover:bg-[#FCE9E5] transition-colors cursor-pointer"
                       aria-label="Increase quantity"
                     >
                       <Plus className="w-3.5 h-3.5" />
@@ -347,14 +347,14 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   <button
                     onClick={handleAddToCart}
-                    className="w-full py-3.5 px-6 rounded-full bg-[#8F3032] text-white text-sm font-semibold hover:bg-[#722628] shadow-md hover:shadow-boutique-hover transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShoppingBag className="w-4 h-4" />
                     <span>Add to Cart</span>
                   </button>
                   <button
                     onClick={handleBuyNow}
-                    className="w-full py-3.5 px-6 rounded-full bg-[#FDE9E5] text-[#8F3032] text-sm font-semibold hover:bg-[#F4C7C1] border border-[#E8D4CF] transition-all flex items-center justify-center gap-2"
+                    className="w-full py-3.5 px-6 rounded-full bg-white text-[#2E211E] hover:bg-[#FCE9E5] hover:text-[#913638] border border-[#E7D1CC] hover:border-[#EFB8B0] text-xs sm:text-sm font-semibold active:scale-[0.98] shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Buy Now</span>
                     <ArrowRight className="w-4 h-4" />
@@ -363,17 +363,17 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               </div>
 
               {/* Guarantees */}
-              <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#E8D4CF] text-[11px] text-[#78635E]">
+              <div className="grid grid-cols-3 gap-2 pt-4 border-t border-[#E7D1CC] text-[11px] text-[#786864]">
                 <div className="flex items-center gap-1.5">
-                  <Truck className="w-4 h-4 text-[#8F3032] shrink-0" />
+                  <Truck className="w-4 h-4 text-[#913638] shrink-0" />
                   <span>Pan India Delivery</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[#8F3032] shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-[#913638] shrink-0" />
                   <span>Handmade Guarantee</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <RotateCcw className="w-4 h-4 text-[#8F3032] shrink-0" />
+                  <RotateCcw className="w-4 h-4 text-[#913638] shrink-0" />
                   <span>Safe Packaging</span>
                 </div>
               </div>
@@ -384,60 +384,60 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         </div>
 
         {/* Tabbed Product Details */}
-        <div className="bg-white rounded-3xl border border-[#E8D4CF] p-6 sm:p-10 shadow-boutique mb-16">
-          <div className="flex items-center gap-4 sm:gap-8 border-b border-[#E8D4CF] pb-4 mb-6 overflow-x-auto no-scrollbar">
+        <div className="bg-white rounded-3xl border border-[#E7D1CC] p-6 sm:p-10 shadow-boutique mb-16">
+          <div className="flex items-center gap-4 sm:gap-8 border-b border-[#E7D1CC] pb-4 mb-6 overflow-x-auto no-scrollbar">
             <button
               onClick={() => setActiveTab("desc")}
-              className={`font-serif-luxury text-base sm:text-lg font-bold pb-2 transition-all whitespace-nowrap relative ${
+              className={`font-serif-luxury text-base sm:text-lg font-bold pb-2 transition-all whitespace-nowrap relative cursor-pointer ${
                 activeTab === "desc"
-                  ? "text-[#8F3032]"
-                  : "text-[#78635E] hover:text-[#3A211D]"
+                  ? "text-[#913638]"
+                  : "text-[#786864] hover:text-[#2E211E]"
               }`}
             >
               <span>Product Description</span>
               {activeTab === "desc" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8F3032] rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#913638] rounded-full" />
               )}
             </button>
 
             <button
               onClick={() => setActiveTab("specs")}
-              className={`font-serif-luxury text-base sm:text-lg font-bold pb-2 transition-all whitespace-nowrap relative ${
+              className={`font-serif-luxury text-base sm:text-lg font-bold pb-2 transition-all whitespace-nowrap relative cursor-pointer ${
                 activeTab === "specs"
-                  ? "text-[#8F3032]"
-                  : "text-[#78635E] hover:text-[#3A211D]"
+                  ? "text-[#913638]"
+                  : "text-[#786864] hover:text-[#2E211E]"
               }`}
             >
               <span>Crafting & Specifications</span>
               {activeTab === "specs" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8F3032] rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#913638] rounded-full" />
               )}
             </button>
 
             <button
               onClick={() => setActiveTab("reviews")}
-              className={`font-serif-luxury text-base sm:text-lg font-bold pb-2 transition-all whitespace-nowrap relative ${
+              className={`font-serif-luxury text-base sm:text-lg font-bold pb-2 transition-all whitespace-nowrap relative cursor-pointer ${
                 activeTab === "reviews"
-                  ? "text-[#8F3032]"
-                  : "text-[#78635E] hover:text-[#3A211D]"
+                  ? "text-[#913638]"
+                  : "text-[#786864] hover:text-[#2E211E]"
               }`}
             >
               <span>Artisan Reviews ({product.reviewCount})</span>
               {activeTab === "reviews" && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8F3032] rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#913638] rounded-full" />
               )}
             </button>
           </div>
 
           {/* Tab 1: Description */}
           {activeTab === "desc" && (
-            <div className="space-y-4 text-sm text-[#78635E] leading-relaxed max-w-3xl">
+            <div className="space-y-4 text-sm text-[#786864] leading-relaxed max-w-3xl">
               <p>{product.description}</p>
               <p>
                 Each stitch is tightly looped by hand to ensure longevity, color fastness, and structure retention. Unlike factory machine-made knits, our artisanal crochet possesses unmistakable warmth, depth, and personality.
               </p>
-              <div className="p-4 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] flex items-center gap-3 text-xs text-[#3A211D]">
-                <FlowerIcon className="w-5 h-5 text-[#8F3032] shrink-0" />
+              <div className="p-4 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] flex items-center gap-3 text-xs text-[#2E211E]">
+                <FlowerIcon className="w-5 h-5 text-[#913638] shrink-0" />
                 <span>
                   Every creation comes nestled in our signature KNOTELLE recycled boutique box, tied with satin ribbon and sprinkled with dried lavender buds.
                 </span>
@@ -449,14 +449,14 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
           {activeTab === "specs" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl text-sm">
               <div className="space-y-3">
-                <h4 className="font-bold text-[#3A211D] flex items-center gap-2">
-                  <FlowerIcon className="w-4 h-4 text-[#8F3032]" />
+                <h4 className="font-bold text-[#2E211E] flex items-center gap-2">
+                  <FlowerIcon className="w-4 h-4 text-[#913638]" />
                   <span>Materials Used</span>
                 </h4>
-                <ul className="space-y-1 text-[#78635E] text-xs">
+                <ul className="space-y-1 text-[#786864] text-xs">
                   {product.materials?.map((mat, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#8F3032]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#913638]" />
                       <span>{mat}</span>
                     </li>
                   )) || <li>100% Premium Milk Cotton Yarn</li>}
@@ -464,11 +464,11 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               </div>
 
               <div className="space-y-3">
-                <h4 className="font-bold text-[#3A211D] flex items-center gap-2">
-                  <Ruler className="w-4 h-4 text-[#8F3032]" />
+                <h4 className="font-bold text-[#2E211E] flex items-center gap-2">
+                  <Ruler className="w-4 h-4 text-[#913638]" />
                   <span>Dimensions & Time</span>
                 </h4>
-                <div className="space-y-1 text-[#78635E] text-xs">
+                <div className="space-y-1 text-[#786864] text-xs">
                   <p>Dimensions: {product.dimensions || "Standard Boutique Sizing"}</p>
                   <p>Handcrafting Time: {product.craftTime || "4-6 hours"}</p>
                 </div>
@@ -479,16 +479,16 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
           {/* Tab 3: Reviews */}
           {activeTab === "reviews" && (
             <div className="space-y-6 max-w-3xl">
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF]">
-                <div className="text-center pr-4 border-r border-[#E8D4CF]">
-                  <span className="font-serif-luxury text-3xl font-bold text-[#8F3032]">
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC]">
+                <div className="text-center pr-4 border-r border-[#E7D1CC]">
+                  <span className="font-serif-luxury text-3xl font-bold text-[#913638]">
                     {product.rating.toFixed(1)}
                   </span>
-                  <p className="text-[10px] text-[#78635E]">out of 5.0</p>
+                  <p className="text-[10px] text-[#786864]">out of 5.0</p>
                 </div>
                 <div>
                   <StarRating rating={product.rating} size="md" />
-                  <p className="text-xs text-[#78635E] mt-1">
+                  <p className="text-xs text-[#786864] mt-1">
                     Based on {product.reviewCount} verified purchases
                   </p>
                 </div>
@@ -497,25 +497,25 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
               {product.reviews && product.reviews.length > 0 ? (
                 <div className="space-y-4">
                   {product.reviews.map((rev) => (
-                    <div key={rev.id} className="p-4 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] space-y-2">
+                    <div key={rev.id} className="p-4 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] space-y-2">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-[#3A211D]">{rev.userName}</span>
+                          <span className="text-xs font-bold text-[#2E211E]">{rev.userName}</span>
                           {rev.verified && (
                             <span className="text-[10px] text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full font-medium">
                               Verified Buyer
                             </span>
                           )}
                         </div>
-                        <span className="text-[10px] text-[#78635E]">{rev.date}</span>
+                        <span className="text-[10px] text-[#786864]">{rev.date}</span>
                       </div>
                       <StarRating rating={rev.rating} size="sm" />
-                      <p className="text-xs text-[#78635E] leading-relaxed">{rev.comment}</p>
+                      <p className="text-xs text-[#786864] leading-relaxed">{rev.comment}</p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-[#78635E]">
+                <p className="text-xs text-[#786864]">
                   Be the first to leave a review after your handmade creation arrives!
                 </p>
               )}
@@ -524,18 +524,18 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         </div>
 
         {/* Custom Order Request Promotional Banner */}
-        <div className="rounded-3xl bg-gradient-to-r from-[#FDE9E5] via-[#FFF8F5] to-[#FDE9E5] border border-[#E8D4CF] p-8 sm:p-10 mb-16 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-boutique">
+        <div className="rounded-3xl bg-gradient-to-r from-[#FCE9E5] via-[#FFF9F6] to-[#FCE9E5] border border-[#E7D1CC] p-8 sm:p-10 mb-16 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-boutique">
           <div className="space-y-1 text-center sm:text-left">
-            <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#3A211D]">
+            <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#2E211E]">
               Want a different color, size, or custom design?
             </h3>
-            <p className="text-xs sm:text-sm text-[#78635E]">
+            <p className="text-xs sm:text-sm text-[#786864]">
               We craft bespoke pieces from your reference images and ideas.
             </p>
           </div>
           <Link
             href="/custom-order"
-            className="px-7 py-3 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] shadow-sm transition-all flex items-center gap-2 shrink-0"
+            className="px-7 py-3 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs hover:shadow-md transition-all flex items-center gap-2 shrink-0 cursor-pointer"
           >
             <span>Request Custom Order</span>
             <Sparkles className="w-3.5 h-3.5" />
@@ -546,12 +546,12 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
         {relatedProducts.length > 0 && (
           <div>
             <div className="flex items-center justify-between mb-8">
-              <h2 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#3A211D]">
+              <h2 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#2E211E]">
                 You May Also Adore
               </h2>
               <Link
                 href={`/category/${product.categorySlug}`}
-                className="text-xs font-semibold text-[#8F3032] hover:underline"
+                className="text-xs font-semibold text-[#913638] hover:underline"
               >
                 More in {product.category} →
               </Link>

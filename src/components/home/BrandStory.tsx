@@ -51,7 +51,7 @@ export function BrandStory() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] shadow-md hover:shadow-boutique-hover transition-all active:scale-95"
+                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] shadow-xs hover:shadow-boutique-hover transition-all active:scale-[0.98]"
               >
                 <span>Read Our Story</span>
                 <ArrowRight className="w-4 h-4" />

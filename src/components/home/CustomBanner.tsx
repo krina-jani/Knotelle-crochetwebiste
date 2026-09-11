@@ -30,7 +30,7 @@ export function CustomBanner() {
               <div className="pt-2">
                 <Link
                   href="/custom-order"
-                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] shadow-sm hover:shadow-boutique-hover transition-all group"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] shadow-xs hover:shadow-boutique-hover transition-all group active:scale-[0.98]"
                 >
                   <span>Request Your Custom Order</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

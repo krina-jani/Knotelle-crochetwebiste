@@ -41,7 +41,7 @@ function SearchContent() {
   }, [query, selectedCategory, sortBy]);
 
   return (
-    <div className="bg-[#FFF8F5] min-h-screen py-8 lg:py-12">
+    <div className="bg-[#FFF9F6] min-h-screen py-8 lg:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
@@ -54,23 +54,23 @@ function SearchContent() {
         />
 
         {/* Search Header Banner */}
-        <div className="bg-white rounded-3xl border border-[#E8D4CF] p-8 sm:p-10 mb-8 shadow-boutique text-center max-w-3xl mx-auto">
+        <div className="bg-white rounded-3xl border border-[#E7D1CC] p-6 sm:p-10 mb-8 shadow-boutique text-center max-w-3xl mx-auto">
           <div className="flex justify-center mb-2">
-            <BotanicalFlourish className="w-20 h-4 text-[#E9AAA3]" />
+            <BotanicalFlourish className="w-20 h-4 text-[#EFB8B0]" />
           </div>
 
-          <h1 className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#3A211D] mb-2">
+          <h1 className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#2E211E] mb-2">
             {query ? (
               <>
                 Search Results for{" "}
-                <span className="text-[#8F3032] italic">&ldquo;{query}&rdquo;</span>
+                <span className="text-[#913638] italic">&ldquo;{query}&rdquo;</span>
               </>
             ) : (
               "Explore All Creations"
             )}
           </h1>
 
-          <p className="text-xs sm:text-sm text-[#78635E] mb-6">
+          <p className="text-xs sm:text-sm text-[#786864] mb-6">
             Found {searchResults.length} matching handmade crochet creations
           </p>
 
@@ -84,21 +84,21 @@ function SearchContent() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search flowers, bouquets, bags, plushies..."
-              className="w-full pl-12 pr-4 py-3 rounded-full bg-[#FFF8F5] border border-[#E8D4CF] text-sm text-[#3A211D] placeholder-[#78635E]/60 focus:outline-none focus:border-[#8F3032]"
+              className="w-full pl-12 pr-4 py-3 rounded-full bg-[#FFF9F6] border border-[#E7D1CC] text-xs sm:text-sm text-[#2E211E] placeholder-[#786864]/60 focus:outline-none focus:border-[#913638] transition-colors"
             />
-            <Search className="w-5 h-5 text-[#8F3032] absolute left-4 top-1/2 -translate-y-1/2" />
+            <Search className="w-5 h-5 text-[#913638] absolute left-4 top-1/2 -translate-y-1/2" />
           </form>
         </div>
 
         {/* Filter & Sort Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#E8D4CF] mb-8 shadow-xs">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-[#E7D1CC] mb-8 shadow-xs">
           <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 no-scrollbar">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap active:scale-[0.98] transition-all cursor-pointer ${
                 selectedCategory === "all"
-                  ? "bg-[#8F3032] text-white"
-                  : "bg-[#FFF8F5] text-[#78635E] border border-[#E8D4CF] hover:text-[#3A211D]"
+                  ? "bg-[#913638] text-white shadow-xs"
+                  : "bg-white text-[#2E211E] border border-[#E7D1CC] hover:border-[#EFB8B0] hover:bg-[#FCE9E5] hover:text-[#913638]"
               }`}
             >
               All Categories
@@ -107,10 +107,10 @@ function SearchContent() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.slug)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap active:scale-[0.98] transition-all cursor-pointer ${
                   selectedCategory === cat.slug
-                    ? "bg-[#8F3032] text-white"
-                    : "bg-[#FFF8F5] text-[#78635E] border border-[#E8D4CF] hover:text-[#3A211D]"
+                    ? "bg-[#913638] text-white shadow-xs"
+                    : "bg-white text-[#2E211E] border border-[#E7D1CC] hover:border-[#EFB8B0] hover:bg-[#FCE9E5] hover:text-[#913638]"
                 }`}
               >
                 {cat.name}
@@ -119,12 +119,12 @@ function SearchContent() {
           </div>
 
           <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
-            <label htmlFor="search-sort-select" className="text-xs text-[#78635E]">Sort:</label>
+            <label htmlFor="search-sort-select" className="text-xs text-[#786864]">Sort:</label>
             <select
               id="search-sort-select"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-[#FFF8F5] border border-[#E8D4CF] rounded-full px-3 py-1.5 text-xs font-semibold text-[#3A211D] focus:outline-none cursor-pointer"
+              className="bg-[#FFF9F6] border border-[#E7D1CC] rounded-full px-3 py-1.5 text-xs font-semibold text-[#2E211E] focus:outline-none cursor-pointer"
             >
               <option value="relevance">Relevance</option>
               <option value="price-low">Price: Low to High</option>
@@ -136,35 +136,35 @@ function SearchContent() {
 
         {/* Results Grid or Empty State */}
         {searchResults.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
             {searchResults.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl border border-[#E8D4CF] p-12 sm:p-16 text-center max-w-2xl mx-auto shadow-boutique">
-            <div className="w-16 h-16 rounded-full bg-[#FDE9E5] border border-[#E8D4CF] flex items-center justify-center text-[#8F3032] mx-auto mb-4">
+          <div className="bg-white rounded-3xl border border-[#E7D1CC] p-8 sm:p-16 text-center max-w-2xl mx-auto shadow-boutique">
+            <div className="w-16 h-16 rounded-full bg-[#FCE9E5] border border-[#E7D1CC] flex items-center justify-center text-[#913638] mx-auto mb-4">
               <Sparkles className="w-8 h-8" />
             </div>
 
-            <h3 className="font-serif-luxury text-2xl font-bold text-[#3A211D] mb-2">
+            <h3 className="font-serif-luxury text-2xl font-bold text-[#2E211E] mb-2">
               No little stitch found.
             </h3>
 
-            <p className="text-sm text-[#78635E] mb-6 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#786864] mb-6 leading-relaxed">
               Try another search keyword, browse our curated category collections, or request a custom order crafted just for you.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/shop"
-                className="px-6 py-2.5 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-colors"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] transition-all"
               >
                 Explore All Products →
               </Link>
               <Link
                 href="/custom-order"
-                className="px-6 py-2.5 rounded-full bg-[#FDE9E5] text-[#8F3032] text-xs font-semibold hover:bg-[#F4C7C1] border border-[#E8D4CF] transition-colors"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] hover:border-[#EFB8B0] text-xs font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] transition-all shadow-xs"
               >
                 Create Custom Order ✨
               </Link>

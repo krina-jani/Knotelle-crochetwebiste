@@ -27,45 +27,45 @@ export default function AccountDashboardPage() {
     <div className="space-y-8 animate-in fade-in">
       
       {/* Welcome Banner */}
-      <div className="bg-white rounded-3xl border border-[#E8D4CF] p-6 sm:p-8 shadow-boutique flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-3xl border border-[#E7D1CC] p-6 sm:p-8 shadow-boutique flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-[#8F3032] mb-1">
-            <FlowerIcon className="w-4 h-4 text-[#8F3032]" />
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#913638] mb-1">
+            <FlowerIcon className="w-4 h-4 text-[#913638]" />
             <span>KNOTELLE Member Atelier</span>
           </div>
-          <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#3A211D]">
+          <h1 className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#2E211E]">
             Welcome back, {user?.name || "Ananya"}!
           </h1>
-          <p className="text-xs sm:text-sm text-[#78635E] mt-1">
+          <p className="text-xs sm:text-sm text-[#786864] mt-1">
             Manage your bespoke crochet orders, track artisan progress, and saved favorites.
           </p>
         </div>
 
         <Link
           href="/shop"
-          className="px-6 py-2.5 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] shadow-sm transition-all shrink-0"
+          className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-sm transition-all text-center shrink-0"
         >
           Explore Shop →
         </Link>
       </div>
 
       {/* 4 Stat Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
           return (
             <Link
               key={idx}
               href={stat.href}
-              className="bg-white rounded-3xl border border-[#E8D4CF] p-5 shadow-boutique hover:shadow-boutique-hover transition-all group block"
+              className="bg-white rounded-3xl border border-[#E7D1CC] p-4 sm:p-5 shadow-boutique hover:shadow-boutique-hover transition-all group block"
             >
-              <div className="w-10 h-10 rounded-2xl bg-[#FDE9E5] border border-[#E8D4CF] flex items-center justify-center text-[#8F3032] mb-3 group-hover:bg-[#8F3032] group-hover:text-white transition-colors">
+              <div className="w-10 h-10 rounded-2xl bg-[#FCE9E5] border border-[#E7D1CC] flex items-center justify-center text-[#913638] mb-3 group-hover:bg-[#913638] group-hover:text-white transition-colors">
                 <Icon className="w-5 h-5" />
               </div>
-              <p className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#3A211D]">
+              <p className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#2E211E]">
                 {stat.value}
               </p>
-              <p className="text-xs text-[#78635E] mt-0.5 group-hover:text-[#8F3032] transition-colors">
+              <p className="text-xs text-[#786864] mt-0.5 group-hover:text-[#913638] transition-colors">
                 {stat.title}
               </p>
             </Link>
@@ -74,14 +74,14 @@ export default function AccountDashboardPage() {
       </div>
 
       {/* Recent Orders Section */}
-      <div className="bg-white rounded-3xl border border-[#E8D4CF] p-6 sm:p-8 shadow-boutique space-y-6">
-        <div className="flex items-center justify-between pb-4 border-b border-[#E8D4CF]">
-          <h2 className="font-serif-luxury text-xl font-bold text-[#3A211D]">
+      <div className="bg-white rounded-3xl border border-[#E7D1CC] p-6 sm:p-8 shadow-boutique space-y-6">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E7D1CC]">
+          <h2 className="font-serif-luxury text-xl font-bold text-[#2E211E]">
             Recent Orders
           </h2>
           <Link
             href="/account/orders"
-            className="text-xs font-semibold text-[#8F3032] hover:underline flex items-center gap-1"
+            className="text-xs font-semibold text-[#913638] hover:underline flex items-center gap-1"
           >
             <span>View All</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -93,28 +93,28 @@ export default function AccountDashboardPage() {
             {orders.slice(0, 2).map((order) => (
               <div
                 key={order.id}
-                className="p-5 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                className="p-4 sm:p-5 rounded-2xl bg-[#FFF9F6] border border-[#E7D1CC] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-[#3A211D]">
+                    <span className="text-xs font-bold text-[#2E211E]">
                       {order.orderNumber}
                     </span>
-                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#FDE9E5] text-[#8F3032] font-semibold border border-[#E8D4CF]">
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#FCE9E5] text-[#913638] font-semibold border border-[#E7D1CC]">
                       {order.status}
                     </span>
                   </div>
-                  <p className="text-xs text-[#78635E]">
+                  <p className="text-xs text-[#786864]">
                     Placed on {order.orderDate} &bull; {order.items.length} handmade item(s)
                   </p>
-                  <p className="text-xs font-bold text-[#8F3032] pt-1">
+                  <p className="text-xs font-bold text-[#913638] pt-1">
                     Total: ₹{order.total.toLocaleString("en-IN")}
                   </p>
                 </div>
 
                 <Link
                   href={`/account/orders/${order.id}`}
-                  className="px-5 py-2 rounded-full bg-white text-[#8F3032] border border-[#E8D4CF] text-xs font-semibold hover:bg-[#FDE9E5] transition-colors"
+                  className="w-full sm:w-auto px-5 py-2 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] hover:border-[#EFB8B0] text-xs font-semibold hover:bg-[#FCE9E5] hover:text-[#913638] active:scale-[0.98] transition-all text-center"
                 >
                   Track Order Timeline →
                 </Link>
@@ -122,7 +122,7 @@ export default function AccountDashboardPage() {
             ))}
           </div>
         ) : (
-          <p className="text-xs text-[#78635E] py-4">No recent orders found.</p>
+          <p className="text-xs text-[#786864] py-4">No recent orders found.</p>
         )}
       </div>
 

@@ -85,7 +85,7 @@ export function BlogReels() {
             href="https://instagram.com/knotelleindia"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E7D1CC] text-xs font-bold text-[#913638] hover:bg-[#913638] hover:text-white shadow-xs transition-all w-fit"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E7D1CC] text-xs font-semibold text-[#913638] hover:bg-[#913638] hover:text-white shadow-xs transition-all w-fit active:scale-[0.98]"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Follow @knotelleindia</span>
@@ -93,7 +93,7 @@ export function BlogReels() {
         </div>
 
         {/* 4 Reel Video Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {REEL_POSTS.map((reel) => {
             const isLiked = likedReels[reel.id];
 

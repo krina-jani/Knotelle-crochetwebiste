@@ -43,7 +43,7 @@ export function Newsletter() {
                   <span>Welcome to the KNOTELLE family!</span>
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex items-center w-full max-w-md shadow-xs rounded-xl overflow-hidden border border-[#E7D1CC] bg-white">
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-stretch sm:items-center w-full max-w-md shadow-xs rounded-2xl sm:rounded-full overflow-hidden border border-[#E7D1CC] bg-white p-1 sm:p-0">
                   <input
                     type="email"
                     required
@@ -54,7 +54,7 @@ export function Newsletter() {
                   />
                   <button
                     type="submit"
-                    className="px-5 sm:px-6 py-2.5 bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] transition-colors shrink-0 flex items-center gap-1.5 active:scale-95"
+                    className="px-5 sm:px-6 py-2.5 bg-[#913638] text-white text-xs sm:text-sm font-semibold hover:bg-[#74292B] rounded-full sm:rounded-none transition-colors shrink-0 flex items-center justify-center gap-1.5 active:scale-[0.98] cursor-pointer shadow-xs"
                   >
                     <span>Subscribe</span>
                     <ArrowRight className="w-3.5 h-3.5" />

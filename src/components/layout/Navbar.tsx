@@ -82,9 +82,6 @@ export function Navbar() {
                         : "text-[#2E211E] hover:text-[#913638]"
                     }`}
                   >
-                    {isActive && (
-                      <span className="w-1 h-1 rounded-full bg-[#913638] mb-0.5" />
-                    )}
                     <span>{link.name}</span>
                     {isActive && (
                       <span className="absolute bottom-0 w-6 h-0.5 bg-[#913638] rounded-full" />

@@ -74,15 +74,15 @@ export function BestSellers() {
             Best Sellers
           </h2>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 no-scrollbar">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => handleTabChange(cat.id)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   activeTab === cat.id
                     ? "bg-[#913638] text-white shadow-xs"
-                    : "bg-transparent text-[#786864] hover:text-[#2E211E]"
+                    : "bg-white text-[#2E211E] border border-[#E7D1CC] hover:bg-[#FCE9E5] hover:text-[#913638]"
                 }`}
               >
                 {cat.label}

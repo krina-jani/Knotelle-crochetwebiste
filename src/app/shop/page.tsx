@@ -225,7 +225,7 @@ export default function ShopPage() {
       {hasActiveFilters && (
         <button
           onClick={resetAllFilters}
-          className="w-full py-2.5 px-4 rounded-full border border-[#E8D4CF] text-xs font-semibold text-[#8F3032] hover:bg-[#FDE9E5] transition-colors flex items-center justify-center gap-1.5"
+          className="w-full py-2.5 px-4 rounded-full bg-white text-[#2E211E] border border-[#E7D1CC] hover:bg-[#FCE9E5] hover:text-[#913638] hover:border-[#EFB8B0] text-xs font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Reset All Filters</span>
@@ -247,9 +247,9 @@ export default function ShopPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsMobileFiltersOpen(true)}
-              className="lg:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FDE9E5] text-[#8F3032] text-xs font-semibold border border-[#E8D4CF]"
+              className="lg:hidden inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#2E211E] hover:bg-[#FCE9E5] hover:text-[#913638] text-xs font-semibold border border-[#E7D1CC] shadow-xs active:scale-[0.98] cursor-pointer"
             >
-              <SlidersHorizontal className="w-4 h-4" />
+              <SlidersHorizontal className="w-4 h-4 text-[#913638]" />
               <span>Filters {hasActiveFilters && "•"}</span>
             </button>
             <span className="text-xs text-[#78635E]">
@@ -327,13 +327,13 @@ export default function ShopPage() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <button
                     onClick={resetAllFilters}
-                    className="px-6 py-2.5 rounded-full bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-colors"
+                    className="px-6 py-2.5 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs transition-all cursor-pointer"
                   >
                     Reset Filters
                   </button>
                   <Link
                     href="/custom-order"
-                    className="px-6 py-2.5 rounded-full bg-[#FDE9E5] text-[#8F3032] text-xs font-semibold hover:bg-[#F4C7C1] border border-[#E8D4CF] transition-colors"
+                    className="px-6 py-2.5 rounded-full bg-white text-[#2E211E] hover:bg-[#FCE9E5] hover:text-[#913638] border border-[#E7D1CC] text-xs font-semibold active:scale-[0.98] shadow-xs transition-all"
                   >
                     Request Custom Order ✨
                   </Link>
@@ -356,12 +356,12 @@ export default function ShopPage() {
           <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
             <div className="w-screen max-w-xs bg-white border-l border-[#E8D4CF] shadow-2xl flex flex-col p-6 overflow-y-auto animate-in slide-in-from-right">
               <div className="flex items-center justify-between pb-4 border-b border-[#E8D4CF] mb-4">
-                <h3 className="font-serif-luxury text-lg font-bold text-[#3A211D]">
+                <h3 className="font-serif-luxury text-lg font-bold text-[#2E211E]">
                   Filters
                 </h3>
                 <button
                   onClick={() => setIsMobileFiltersOpen(false)}
-                  className="p-1.5 text-[#78635E] hover:text-[#3A211D]"
+                  className="p-1.5 text-[#786864] hover:text-[#2E211E] rounded-full hover:bg-[#FCE9E5] transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -372,7 +372,7 @@ export default function ShopPage() {
               <div className="mt-8 pt-4 border-t border-[#E8D4CF]">
                 <button
                   onClick={() => setIsMobileFiltersOpen(false)}
-                  className="w-full py-3 rounded-full bg-[#8F3032] text-white text-xs font-semibold"
+                  className="w-full py-3 rounded-full bg-[#913638] text-white text-xs font-semibold hover:bg-[#74292B] active:scale-[0.98] shadow-xs transition-all cursor-pointer"
                 >
                   Apply Filters ({filteredProducts.length} Results)
                 </button>

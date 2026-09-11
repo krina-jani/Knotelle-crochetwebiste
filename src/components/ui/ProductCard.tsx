@@ -99,14 +99,14 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="absolute inset-x-3 bottom-3 hidden sm:flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-10">
           <button
             onClick={handleQuickAdd}
-            className="flex-1 py-2 px-3 rounded-full bg-[#913638]/95 hover:bg-[#74292B] text-white text-xs font-semibold tracking-wide flex items-center justify-center gap-1.5 shadow-md backdrop-blur-sm transition-colors"
+            className="flex-1 py-2 px-3 rounded-full bg-[#913638] hover:bg-[#74292B] active:scale-[0.98] text-white text-xs font-semibold tracking-normal flex items-center justify-center gap-1.5 shadow-xs transition-all cursor-pointer"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             <span>Quick Add</span>
           </button>
           <Link
             href={`/product/${product.slug}`}
-            className="w-8 h-8 rounded-full bg-white text-[#2E211E] hover:text-[#913638] border border-[#E7D1CC] flex items-center justify-center shadow-md transition-colors shrink-0"
+            className="w-8 h-8 rounded-full bg-white text-[#2E211E] hover:text-[#913638] hover:bg-[#FCE9E5] border border-[#E7D1CC] flex items-center justify-center shadow-xs transition-colors shrink-0 active:scale-[0.98]"
             aria-label={`View ${product.name}`}
           >
             <Eye className="w-3.5 h-3.5" />
@@ -115,23 +115,23 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-4 flex flex-col flex-1 bg-white">
+      <div className="p-3.5 sm:p-4 flex flex-col flex-1 bg-white">
         {/* Product Title */}
         <Link
           href={`/product/${product.slug}`}
-          className="font-serif-luxury text-base font-bold text-[#2E211E] group-hover:text-[#913638] transition-colors line-clamp-1 mb-1"
+          className="font-serif-luxury text-sm sm:text-base font-bold text-[#2E211E] group-hover:text-[#913638] transition-colors line-clamp-1 mb-1"
         >
           {product.name}
         </Link>
 
         {/* Price & Rating Row */}
-        <div className="mt-auto pt-1 flex items-center justify-between">
+        <div className="mt-auto pt-1 flex items-center justify-between gap-1 flex-wrap">
           <div className="flex items-baseline gap-1.5">
-            <span className="text-base font-bold text-[#913638]">
+            <span className="text-sm sm:text-base font-bold text-[#913638]">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
             {product.comparePrice && (
-              <span className="text-xs text-[#786864] line-through">
+              <span className="text-[10px] sm:text-xs text-[#786864] line-through">
                 ₹{product.comparePrice.toLocaleString("en-IN")}
               </span>
             )}
@@ -143,9 +143,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         {/* Mobile-only Direct Add to Cart Button */}
         <button
           onClick={handleQuickAdd}
-          className="mt-3 sm:hidden w-full py-1.5 px-3 rounded-full bg-[#FCE9E5] text-[#913638] text-xs font-semibold flex items-center justify-center gap-1.5 border border-[#E7D1CC]"
+          className="mt-3 sm:hidden w-full py-2 px-3 rounded-full bg-white text-[#2E211E] hover:bg-[#FCE9E5] hover:text-[#913638] border border-[#E7D1CC] active:bg-[#913638] active:text-white active:scale-[0.98] text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
         >
-          <ShoppingBag className="w-3.5 h-3.5" />
+          <ShoppingBag className="w-3.5 h-3.5 text-[#913638]" />
           <span>Add to Cart</span>
         </button>
       </div>

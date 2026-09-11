@@ -31,24 +31,24 @@ export function FeatureBar() {
   ];
 
   return (
-    <section className="bg-white border-b border-[#E7D1CC] py-6 sm:py-8">
+    <section className="bg-white border-b border-[#E7D1CC] py-5 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 items-center">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
                 key={index}
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-2.5 sm:gap-3 group"
               >
-                <div className="w-10 h-10 rounded-2xl bg-[#FCE9E5] flex items-center justify-center text-[#913638] shrink-0 group-hover:bg-[#913638] group-hover:text-white transition-colors duration-300">
-                  <Icon className="w-5 h-5 stroke-[1.5]" />
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#FCE9E5] flex items-center justify-center text-[#913638] shrink-0 group-hover:bg-[#913638] group-hover:text-white transition-colors duration-300">
+                  <Icon className="w-4.5 h-4.5 sm:w-5 sm:h-5 stroke-[1.5]" />
                 </div>
                 <div className="flex flex-col min-w-0">
-                  <h4 className="text-xs sm:text-sm font-bold text-[#2E211E] tracking-tight">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#2E211E] tracking-tight truncate">
                     {feature.title}
                   </h4>
-                  <p className="text-[11px] text-[#786864] mt-0.5 leading-snug">
+                  <p className="text-[10px] sm:text-[11px] text-[#786864] mt-0.5 leading-snug line-clamp-1">
                     {feature.description}
                   </p>
                 </div>

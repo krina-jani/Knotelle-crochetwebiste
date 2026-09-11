@@ -103,7 +103,7 @@ export function Hero() {
           <div className="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6">
             
             {/* Main Headline */}
-            <h1 className="font-serif-luxury text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold text-[#2E211E] leading-[1.05] tracking-tight transition-all duration-500">
+            <h1 className="font-serif-luxury text-2xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold text-[#2E211E] leading-[1.08] tracking-tight transition-all duration-500">
               {slide.titleLine1} <br />
               {slide.titleLine2} <br />
               <span className="text-[#913638] italic font-serif font-normal">
@@ -112,25 +112,25 @@ export function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xs sm:text-base lg:text-lg text-[#786864] font-normal leading-relaxed max-w-md lg:max-w-lg transition-all duration-500">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-[#786864] font-normal leading-relaxed max-w-md lg:max-w-lg transition-all duration-500">
               {slide.subtitle}
             </p>
 
             {/* Interactive Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-1 sm:pt-2">
               <Link
                 href="/shop"
-                className="px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-[#913638] text-white text-xs sm:text-sm md:text-base font-semibold hover:bg-[#74292B] shadow-md hover:shadow-boutique-hover transition-all flex items-center justify-center gap-2 group active:scale-95"
+                className="px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-[#913638] text-white text-xs sm:text-sm md:text-base font-semibold hover:bg-[#74292B] shadow-xs hover:shadow-boutique-hover transition-all flex items-center justify-center gap-2 group active:scale-[0.98]"
               >
                 <span>Shop Now</span>
-                <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <Link
                 href="/shop"
-                className="px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl bg-[#FFF9F6]/90 backdrop-blur-xs text-[#913638] border border-[#913638]/50 hover:border-[#913638] hover:bg-[#FCE9E5] text-xs sm:text-sm md:text-base font-semibold shadow-xs transition-all flex items-center justify-center active:scale-95"
+                className="px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-white/95 backdrop-blur-xs text-[#2E211E] border border-[#E7D1CC] hover:bg-[#FCE9E5] hover:text-[#913638] hover:border-[#EFB8B0] text-xs sm:text-sm md:text-base font-semibold shadow-xs transition-all flex items-center justify-center active:scale-[0.98]"
               >
-                Explore Collections
+                <span>Explore Collections</span>
               </Link>
             </div>
 

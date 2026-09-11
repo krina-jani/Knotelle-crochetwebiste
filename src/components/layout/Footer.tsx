@@ -122,8 +122,10 @@ export function Footer() {
 
             {/* Column 2: Help */}
             <div className="space-y-3.5">
-              <h4 className="font-bold text-sm text-[#2E211E] pb-1">
-                Help
+              <h4 className="font-bold text-sm text-[#2E211E]">
+                <span className="border-b-2 border-[#913638] pb-1 inline-block">
+                  Help
+                </span>
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-[#5C4D49] font-medium pt-1">
                 <li>
@@ -151,8 +153,10 @@ export function Footer() {
 
             {/* Column 3: Contact */}
             <div className="space-y-3.5">
-              <h4 className="font-bold text-sm text-[#2E211E] pb-1">
-                Contact
+              <h4 className="font-bold text-sm text-[#2E211E]">
+                <span className="border-b-2 border-[#913638] pb-1 inline-block">
+                  Contact
+                </span>
               </h4>
               <div className="space-y-3 text-xs sm:text-sm text-[#5C4D49] font-medium pt-1">
                 <p className="flex items-center gap-2.5">
