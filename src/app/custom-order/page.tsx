@@ -14,6 +14,9 @@ import {
   Palette,
   Send,
   HelpCircle,
+  Pipette,
+  Plus,
+  X,
 } from "lucide-react";
 import { CATEGORIES } from "@/data/categories";
 import { FlowerIcon } from "@/components/ui/BotanicalDecorations";
@@ -28,6 +31,21 @@ const PALETTE_OPTIONS = [
   { name: "Pastel Meadow", colors: ["#FDFD96", "#A8BBA2", "#F8C8C8", "#87CEEB"] },
 ];
 
+const QUICK_YARN_SWATCHES = [
+  { name: "Cream White", hex: "#FFFDF9" },
+  { name: "Powder Pink", hex: "#F8C8C8" },
+  { name: "Blush Rose", hex: "#F4C7C1" },
+  { name: "Victorian Berry", hex: "#8F3032" },
+  { name: "Sage Olive", hex: "#9CAF88" },
+  { name: "Lavender Mist", hex: "#D8C7E8" },
+  { name: "Sunset Gold", hex: "#E8A317" },
+  { name: "Terracotta", hex: "#E07A5F" },
+  { name: "Mocha Brown", hex: "#8D6E63" },
+  { name: "Baby Blue", hex: "#87CEEB" },
+  { name: "Lemon Chiffon", hex: "#FDFD96" },
+  { name: "Mint Sprig", hex: "#A8DADC" },
+];
+
 export default function CustomOrderPage() {
   const { showToast } = useToast();
   const [step, setStep] = useState(1);
@@ -37,6 +55,8 @@ export default function CustomOrderPage() {
   // Form State
   const [category, setCategory] = useState("Bouquet");
   const [selectedPalette, setSelectedPalette] = useState("Blush Garden");
+  const [customColors, setCustomColors] = useState<string[]>(["#F4C7C1", "#8F3032", "#9CAF88"]);
+  const [pickerColor, setPickerColor] = useState<string>("#F4C7C1");
   const [customColorNotes, setCustomColorNotes] = useState("");
   const [sizePreference, setSizePreference] = useState("Standard / Medium");
   const [personalization, setPersonalization] = useState("");
@@ -254,6 +274,124 @@ export default function CustomOrderPage() {
                     ))}
                   </div>
 
+                  {/* Interactive Color Picker Section */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#FFF8F5] border border-[#E8D4CF] space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <label className="text-xs font-bold text-[#3A211D] flex items-center gap-1.5">
+                          <Pipette className="w-3.5 h-3.5 text-[#8F3032]" />
+                          <span>Custom Yarn Color Picker:</span>
+                        </label>
+                        <p className="text-[11px] text-[#78635E] mt-0.5">
+                          Pick exact hex colors or click yarn swatches to build your bespoke palette.
+                        </p>
+                      </div>
+
+                      {/* Live Color Picker Input & Add Button */}
+                      <div className="flex items-center gap-2">
+                        <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-[#E8D4CF] shadow-xs">
+                          <input
+                            type="color"
+                            value={pickerColor}
+                            onChange={(e) => setPickerColor(e.target.value)}
+                            className="w-7 h-7 rounded-lg cursor-pointer border-0 bg-transparent p-0 overflow-hidden"
+                            title="Choose custom shade"
+                          />
+                          <input
+                            type="text"
+                            value={pickerColor}
+                            onChange={(e) => setPickerColor(e.target.value)}
+                            className="w-20 text-xs font-mono font-bold uppercase text-[#3A211D] bg-transparent focus:outline-none"
+                            maxLength={7}
+                          />
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (!customColors.includes(pickerColor) && customColors.length < 6) {
+                              setCustomColors([...customColors, pickerColor]);
+                            }
+                          }}
+                          className="px-3.5 py-2 rounded-xl bg-[#8F3032] text-white text-xs font-semibold hover:bg-[#722628] transition-all flex items-center gap-1 shadow-xs cursor-pointer"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                          <span>Add Color</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Active Custom Palette Swatches */}
+                    {customColors.length > 0 && (
+                      <div className="pt-2 border-t border-[#E8D4CF]/60">
+                        <span className="text-[11px] font-semibold text-[#78635E] block mb-2">
+                          Your Selected Yarn Shades ({customColors.length}/6):
+                        </span>
+                        <div className="flex flex-wrap items-center gap-2">
+                          {customColors.map((color, idx) => (
+                            <div
+                              key={idx}
+                              className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-full bg-white border border-[#E8D4CF] shadow-2xs group"
+                            >
+                              <span
+                                className="w-5 h-5 rounded-full border border-black/15 shrink-0 shadow-xs"
+                                style={{ backgroundColor: color }}
+                              />
+                              <span className="text-[11px] font-mono font-bold text-[#3A211D] uppercase">
+                                {color}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => setCustomColors(customColors.filter((_, i) => i !== idx))}
+                                className="ml-1 text-[#78635E] hover:text-[#8F3032] transition-colors cursor-pointer"
+                                aria-label={`Remove color ${color}`}
+                              >
+                                <X className="w-3 h-3" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Quick Artisan Yarn Color Swatches */}
+                    <div className="pt-2 border-t border-[#E8D4CF]/60">
+                      <span className="text-[11px] font-semibold text-[#78635E] block mb-2">
+                        Quick Pick Popular Artisan Shades:
+                      </span>
+                      <div className="flex flex-wrap items-center gap-2">
+                        {QUICK_YARN_SWATCHES.map((swatch) => {
+                          const isSelected = customColors.includes(swatch.hex);
+                          return (
+                            <button
+                              type="button"
+                              key={swatch.hex}
+                              onClick={() => {
+                                if (isSelected) {
+                                  setCustomColors(customColors.filter((c) => c !== swatch.hex));
+                                } else if (customColors.length < 6) {
+                                  setCustomColors([...customColors, swatch.hex]);
+                                }
+                                setPickerColor(swatch.hex);
+                              }}
+                              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-xs transition-all cursor-pointer ${
+                                isSelected
+                                  ? "bg-[#FDE9E5] border-[#8F3032] text-[#8F3032] font-bold shadow-2xs"
+                                  : "bg-white border-[#E8D4CF] text-[#3A211D] hover:border-[#8F3032]/40"
+                              }`}
+                            >
+                              <span
+                                className="w-4 h-4 rounded-full border border-black/15 shrink-0"
+                                style={{ backgroundColor: swatch.hex }}
+                              />
+                              <span className="text-[11px]">{swatch.name}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Specific Custom Color Notes */}
                   <div className="space-y-2 pt-2">
                     <label className="text-xs font-semibold text-[#3A211D] block">
@@ -451,9 +589,25 @@ export default function CustomOrderPage() {
                       <span className="text-[#78635E]">Item Type:</span>
                       <strong className="text-[#3A211D]">{category}</strong>
                     </div>
-                    <div className="flex justify-between border-b border-[#E8D4CF]/60 pb-2">
+                    <div className="flex justify-between items-center border-b border-[#E8D4CF]/60 pb-2">
                       <span className="text-[#78635E]">Color Palette:</span>
-                      <strong className="text-[#3A211D]">{selectedPalette} {customColorNotes && `(${customColorNotes})`}</strong>
+                      <div className="flex items-center gap-2">
+                        <strong className="text-[#3A211D]">
+                          {selectedPalette} {customColorNotes && `(${customColorNotes})`}
+                        </strong>
+                        {customColors.length > 0 && (
+                          <div className="flex items-center gap-1">
+                            {customColors.map((c, i) => (
+                              <span
+                                key={i}
+                                className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs inline-block"
+                                style={{ backgroundColor: c }}
+                                title={c}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <div className="flex justify-between border-b border-[#E8D4CF]/60 pb-2">
                       <span className="text-[#78635E]">Size Preference:</span>
