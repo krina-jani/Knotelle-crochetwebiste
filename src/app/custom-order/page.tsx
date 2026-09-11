@@ -16,7 +16,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { CATEGORIES } from "@/data/categories";
-import { BotanicalFlourish, FlowerIcon } from "@/components/ui/BotanicalDecorations";
+import { FlowerIcon } from "@/components/ui/BotanicalDecorations";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { useToast } from "@/context/ToastContext";
 
@@ -69,28 +69,6 @@ export default function CustomOrderPage() {
         
         {/* Breadcrumb */}
         <Breadcrumbs items={[{ label: "Custom Order Request" }]} className="mb-6" />
-
-        {/* Page Hero Header */}
-        <div className="bg-white rounded-3xl border border-[#E8D4CF] p-8 sm:p-12 mb-10 shadow-boutique text-center relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-3 relative z-10">
-            <div className="flex justify-center mb-1">
-              <BotanicalFlourish className="w-24 h-5 text-[#E9AAA3]" />
-            </div>
-
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8F5] border border-[#E8D4CF] text-xs font-semibold text-[#8F3032]">
-              <Sparkles className="w-3.5 h-3.5 text-[#C69A5A]" />
-              <span>Bespoke Atelier</span>
-            </div>
-
-            <h1 className="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-bold text-[#3A211D] tracking-tight">
-              Your Idea. Our Yarn.
-            </h1>
-
-            <p className="text-sm sm:text-base text-[#78635E] leading-relaxed">
-              Tell us what you have in mind. From custom flower arrangements and memory keepsakes to tailored dimensions, our master artisans will handcraft your vision.
-            </p>
-          </div>
-        </div>
 
         {/* Wizard Form Container */}
         {isSubmitted ? (
