@@ -3,13 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Sparkles, Gift, Smile } from "lucide-react";
+import { ArrowRight, Heart, Sparkles, Leaf, Smile } from "lucide-react";
 
 export function BrandStory() {
   const storyFeatures = [
     { title: "Handmade with Love", icon: Heart },
     { title: "Premium Yarn Quality", icon: Sparkles },
-    { title: "Support Small Business", icon: Gift },
+    { title: "100% Pure Natural Cotton", icon: Leaf },
     { title: "Happiness Guaranteed", icon: Smile },
   ];
 
