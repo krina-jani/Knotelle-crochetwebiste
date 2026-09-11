@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Heart, User, ShoppingBag, Menu } from "lucide-react";
+import { Search, Heart, User, ShoppingBag, Menu, Sparkles } from "lucide-react";
 import { KnotelleCrownLogo } from "@/components/ui/BotanicalDecorations";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
@@ -50,9 +50,28 @@ export function Navbar() {
             </div>
 
             {/* Center: Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
+            <nav className="hidden lg:flex items-center gap-7 xl:gap-9">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
+                const isCustomOrder = link.href === "/custom-order";
+
+                if (isCustomOrder) {
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all shadow-xs active:scale-95 ${
+                        isActive
+                          ? "bg-[#913638] text-white ring-2 ring-[#913638]/25 shadow-sm"
+                          : "bg-[#FCE9E5] text-[#913638] border border-[#E7D1CC] hover:bg-[#913638] hover:text-white hover:border-[#913638] hover:shadow-xs"
+                      }`}
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{link.name}</span>
+                    </Link>
+                  );
+                }
+
                 return (
                   <Link
                     key={link.href}
